@@ -14,6 +14,9 @@
 	<string>fidortry</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<!-- <key>NSPhotoLibraryUsageDescription</key>
+	<key>NSCameraUsageDescription</key>
+	<key>NSMicrophoneUsageDescription</key> -->
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>

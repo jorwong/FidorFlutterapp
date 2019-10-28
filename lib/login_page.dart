@@ -15,6 +15,8 @@ class LoginPage extends StatefulWidget {
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(hintText: 'Email',
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
 
@@ -23,6 +25,8 @@ class LoginPage extends StatefulWidget {
       obscureText: true,
       autofocus: false,
       decoration: InputDecoration(hintText: 'Password',
+      contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
 
