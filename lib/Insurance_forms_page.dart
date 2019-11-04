@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class InsuranceFormsPage extends StatefulWidget {
-  static String tag ='InsuranceFormsPage';
+  static String tag ='Insuranceformpage';
   @override
   _InsuranceFormsPageState createState() => _InsuranceFormsPageState();
 }
 
 class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
+
+  Future<void> _takepicture() async {
+   final imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
+  }
   @override
   Widget build(BuildContext context) {
   final producttype= TextFormField(
@@ -43,11 +48,12 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
       child: MaterialButton(
         minWidth: 200.0,
         height: 42,
-        onPressed: (){},
+        onPressed: _takepicture,
         color: Colors.lightBlueAccent,
         child: Text('Next', style: TextStyle(color: Colors.white)),
     )
     );
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(child: ListView(

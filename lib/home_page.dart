@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'Insurance_forms_page.dart';
+import 'package:http/http.dart';
 
 class HomePage extends StatelessWidget {
   static String tag = 'Homepage';
@@ -42,7 +44,9 @@ final button2 = SizedBox (
       child: FloatingActionButton(
         heroTag: '2nd',
         backgroundColor: Colors.lightBlue,
-        onPressed: (){},
+        onPressed: (){
+          Navigator.of(context).pushNamed(InsuranceFormsPage.tag);
+        },
         hoverElevation: 2.0,
         child: Icon(
         Icons.favorite,
@@ -69,21 +73,21 @@ final button3 = SizedBox (
       )
     );
   
-  final appbar= AppBar(
-    actions: <Widget>[
-      IconButton(
-      icon: Icon(Icons.backup),
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      )
-    ],
-  );
 
     return Scaffold( 
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+      )
+        ],
+      ),
       body: Container(
-        margin: const EdgeInsets.only(top: 200.0),
+        margin: const EdgeInsets.only(top: 180.0),
         child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),

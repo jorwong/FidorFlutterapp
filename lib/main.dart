@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     LoginPage.tag: (context)=>LoginPage(),
     HomePage.tag: (context)=>HomePage(),
+    InsuranceFormsPage.tag: (context)=>InsuranceFormsPage(),
   };
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     theme: ThemeData(
       primarySwatch: Colors.lightBlue
       ),
-      home: InsuranceFormsPage(),
+      home: LoginPage(),
       routes: routes,
     );
   }
