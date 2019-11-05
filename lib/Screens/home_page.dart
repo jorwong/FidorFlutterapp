@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Insurance_forms_page.dart';
 import 'package:fidortry/Provider/class.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatelessWidget {
   static String tag = 'Homepage';
+  SharedPreferences prefs;
+  String token;
+
+  getTokens() async {
+      prefs=await SharedPreferences.getInstance();
+      token=(prefs.getString('access'));
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
+    getTokens();
     final imageBG= Image.asset('',
     width: size.width,
     height: size.height,
@@ -16,7 +25,7 @@ class HomePage extends StatelessWidget {
     );
 
     final financeText= Text(
-      ,
+      token,
       textAlign: TextAlign.center,
       style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),
     );
@@ -38,7 +47,7 @@ class HomePage extends StatelessWidget {
       )
     );
 
-final button2 = SizedBox (
+    final button2 = SizedBox (
       width: 90.0,
       height: 90.0,
       
@@ -57,7 +66,7 @@ final button2 = SizedBox (
       )
     );
 
-final button3 = SizedBox (
+    final button3 = SizedBox (
       width: 50.0,
       height: 50.0,
       

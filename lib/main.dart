@@ -7,12 +7,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
-
-
 class MyApp extends StatelessWidget {
   Future<Token> post;
   void initState() {
     post = getToken();
+    post.then((onValue) async{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('access', onValue.access_token);
+    });
   }
 
   final routes = <String, WidgetBuilder>{
