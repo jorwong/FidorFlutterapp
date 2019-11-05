@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Insurance_forms_page.dart';
-import 'package:http/http.dart';
+import 'package:fidortry/Provider/class.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatelessWidget {
   static String tag = 'Homepage';
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
     );
 
     final financeText= Text(
-      'FINANCE',
+      ,
       textAlign: TextAlign.center,
       style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),
     );
@@ -63,7 +64,9 @@ final button3 = SizedBox (
       child: FloatingActionButton(
         heroTag: '3rd',
         backgroundColor: Colors.lightBlue,
-        onPressed: (){},
+        onPressed: (){
+          
+        },
         hoverElevation: 2.0,
         child: Icon(
         Icons.favorite,

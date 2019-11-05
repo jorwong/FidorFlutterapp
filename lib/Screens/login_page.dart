@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:fidortry/main.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {

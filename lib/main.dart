@@ -1,12 +1,20 @@
-import 'package:fidortry/home_page.dart';
+import 'package:fidortry/Provider/class.dart';
+import 'package:fidortry/Screens/home_page.dart';
 import 'package:flutter/material.dart';
-import 'login_page.dart';
-import 'Insurance_forms_page.dart';
+import 'Screens/login_page.dart';
+import 'Screens/Insurance_forms_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 void main() => runApp(MyApp());
 
 
 
 class MyApp extends StatelessWidget {
+  Future<Token> post;
+  void initState() {
+    post = getToken();
+  }
+
   final routes = <String, WidgetBuilder>{
     LoginPage.tag: (context)=>LoginPage(),
     HomePage.tag: (context)=>HomePage(),
