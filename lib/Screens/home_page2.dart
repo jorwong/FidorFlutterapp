@@ -4,27 +4,29 @@ import 'Insurance_forms_page.dart';
 import 'package:fidortry/Provider/class.dart';
 import 'package:http/http.dart' as http;
 
-class HomePage extends StatelessWidget {
+class HomePage2 extends StatefulWidget{
+  static String tag = 'Homepage';
+  
+  @override
+  _HomePageState createState() => new _HomePageState();
+}
+
+
+class _HomePageState extends State<HomePage2>{
   String token="";
-  SharedPreferences prefs;
-   Future<String> getTokens() async {
-      prefs=await SharedPreferences.getInstance();
-      token=prefs.getString('access');
-      return token;
-  }
 
   void getT() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    token=(prefs.getString('access'));
+    setState(() {
+      token=(prefs.getString('access'));
+    });
   }
-
-  //HomePage({Key key,@required this.token}) : super (key: key);
-
-  static String tag = 'Homepage1';
 
   @override
   Widget build(BuildContext context) {
-    getT();
+    if(token==""){
+      getT();
+    }
     Size size = MediaQuery.of(context).size;
     final imageBG= Image.asset('',
     width: size.width,
@@ -133,7 +135,5 @@ class HomePage extends StatelessWidget {
       ),
     )
     );
-    
   }
 }
-
