@@ -11,7 +11,6 @@ class HomePage2 extends StatefulWidget{
   _HomePageState createState() => new _HomePageState();
 }
 
-
 class _HomePageState extends State<HomePage2>{
   String token="";
 
