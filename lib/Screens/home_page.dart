@@ -25,6 +25,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     getT();
+    
     Size size = MediaQuery.of(context).size;
     final imageBG= Image.asset('',
     width: size.width,

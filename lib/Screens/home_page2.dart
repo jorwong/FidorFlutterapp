@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage2>{
   String token="";
 
   void getT() async{
+    getCustomers();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       token=(prefs.getString('access'));
