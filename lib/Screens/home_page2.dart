@@ -12,14 +12,12 @@ class HomePage2 extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage2>{
-  String token='$';
-
+  String token='\$';
   void getCust() async{
     getCustomers();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       getCustomers().then((Customer cust){
-        token='$'.toString();
         token+=cust.balance.toString();
       });
     });
