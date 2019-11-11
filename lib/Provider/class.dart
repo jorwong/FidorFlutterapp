@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<String> getToken() async{
-  String code='5f47a03196d40601ea16634171b11517';
+  String code='2e12daa7c4257edef6875dacce5f3c3f';
   final response = await http.post('http://apm.sandboxpresales.fidorfzco.com/oauth/token?grant_type=authorization_code&client_id=2d9f97613542093e&client_secret=1f527b70f6c8dc24e7f8e44b8a7cd5b7&code='+code+'&redirect_uri=http://localhost:3000/OAuth2callback');
   print (response.statusCode);
   Map<String, dynamic> jsonn= json.decode(response.body);
@@ -15,10 +15,10 @@ Future<String> getToken() async{
   return jsonn['access_token'];
 }
 
-Future<customer> getCustomers() async{
+Future<Customer> getCustomers() async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token=(prefs.getString('access'));
-  final response =await http.get('http://eg-api.sandboxpresales.fidorfzco.com/fidor_banking/customers',
+  final response =await http.get('http://eg-api.sandboxpresales.fidorfzco.com/fidor_banking/accounts',
   headers: {
     'Content-Type':"application/json",
     'Accept':"application/vnd.fidor.de; version=1,text/json",
@@ -26,17 +26,17 @@ Future<customer> getCustomers() async{
   });
   Map<String, dynamic> decoded = json.decode(response.body);
   print(decoded['data'][0]['id']);
-  customer cust= customer(decoded['data'][0]['id'], decoded['data'][0]['customers'][0]['first_name'], decoded['data'][0]['customers'][0]['last_name'], decoded['data'][0]['balance']);
+  Customer cust= Customer(decoded['data'][0]['id'], decoded['data'][0]['customers'][0]['first_name'], decoded['data'][0]['customers'][0]['last_name'], decoded['data'][0]['balance']);
   return cust;
 }
 
-class customer{
+class Customer{
   String accountid;
   String firstName;
   String lastName;
-  double balance;
+  int balance;
 
-  customer(String id, String fName, String lName, double bal){
+  Customer(String id, String fName, String lName, int bal){
     this.accountid=id;
     this.firstName=fName;
     this.firstName=lName;
@@ -55,7 +55,7 @@ class customer{
     return lastName;
   }
 
-  double get bal{
+  int get bal{
     return balance;
   }
 }
