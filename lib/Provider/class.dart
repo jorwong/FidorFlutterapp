@@ -30,6 +30,25 @@ Future<Customer> getCustomers() async{
   return cust;
 }
 
+Future<String> postTransfer(double amountTrans) async{
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String token=(prefs.getString('access'));
+  final response =await http.post('http://eg-api.sandboxpresales.fidorfzco.com/fidor_banking/internal_transfers',
+  body: {
+  "account_id": "26857779",
+  "receiver": "79054921",
+  "external_uid": "9ur64fgdg355iu8",
+  "amount": amountTrans,
+  "subject": "Insurance Payment"
+  },
+  headers: {
+    'Content-Type':"application/json",
+    'Accept':"application/vnd.fidor.de; version=1,text/json",
+    'Authorization':"Bearer "+token
+  });
+  return (response.statusCode.toString());
+}
+
 class Customer{
   String accountid;
   String firstName;
