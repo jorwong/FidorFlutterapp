@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -8,10 +9,33 @@ class InsuranceFormsPage extends StatefulWidget {
 }
 
 class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
-
-  Future<void> _takepicture() async {
-   final imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
+  File _pickedPicture;
+  void _takepicture() async {
+    final imageSource = await showDialog<ImageSource>(
+      context: context,
+      builder: (context)=>
+      AlertDialog(
+        title: Text("Select the image source"),
+        actions: <Widget>[
+          MaterialButton(
+            child: Text("Gallery"),
+            onPressed: ()=> Navigator.pop(context, ImageSource.gallery),
+          ),
+          MaterialButton(
+            child: Text("Camera"),
+            onPressed: ()=> Navigator.pop(context, ImageSource.camera),
+          )
+        ],
+      )
+    );
+    if (imageSource!=null){
+      final file = await ImagePicker.pickImage(source: imageSource);
+      if (file != null){
+        setState(()=> _pickedPicture=file);
+      }
+    }
   }
+  
   @override
   Widget build(BuildContext context) {
   final producttype= TextFormField(
@@ -41,7 +65,7 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
       ),
     );
 
-    final NextButton= Material (
+    final PictureButton= Material (
       borderRadius: BorderRadius.circular(30.0),
       shadowColor: Colors.lightBlueAccent,
       elevation: 5.0,
@@ -50,8 +74,27 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
         height: 42,
         onPressed: _takepicture,
         color: Colors.lightBlueAccent,
+        child: Text('Pick an Image', style: TextStyle(color: Colors.white)),
+    )
+    );
+
+    final NextButton= Material (
+      borderRadius: BorderRadius.circular(30.0),
+      shadowColor: Colors.lightBlueAccent,
+      elevation: 5.0,
+      child: MaterialButton(
+        minWidth: 200.0,
+        height: 42,
+        onPressed:(){},
+        color: Colors.lightBlueAccent,
         child: Text('Next', style: TextStyle(color: Colors.white)),
     )
+    );
+
+    final ChosenImage= Center(
+      child: _pickedPicture==null?
+      Text("No Image") :
+      Image(image: FileImage(_pickedPicture)),
     );
 
     return Scaffold(
@@ -76,6 +119,10 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
             SizedBox(height: 24.0,),
             somepara,
             SizedBox(height: 24.0,),
+            PictureButton,
+            SizedBox(height: 12.0,),
+            ChosenImage,
+            SizedBox(height: 12.0,),
             NextButton
           ],
         ),),
