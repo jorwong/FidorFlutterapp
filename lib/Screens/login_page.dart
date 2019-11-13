@@ -12,10 +12,10 @@ class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => new _LoginPageState();
   }
-  Future navigateToSubPage(context)async {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage2()));
-  }
-  class _LoginPageState extends State<LoginPage> {
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage2()));
+}
+class _LoginPageState extends State<LoginPage> {
     
     @override
     Widget build(BuildContext context) {
