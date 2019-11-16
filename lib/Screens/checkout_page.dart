@@ -13,7 +13,10 @@ class _CheckoutPageState extends State<CheckoutPage>{
 
     void makeTrans() async{
       await postTransfer(1000).then((resp){
-        Navigator.of(context).pushNamed(HomePage2.tag);
+        Navigator.push(context, new MaterialPageRoute(
+          builder: (context) =>
+              new HomePage2()
+            ));
       });
     }
 
