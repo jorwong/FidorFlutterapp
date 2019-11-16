@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:fidortry/Screens/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -85,7 +86,9 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
       child: MaterialButton(
         minWidth: 200.0,
         height: 42,
-        onPressed:(){},
+        onPressed:(){
+          Navigator.of(context).pushNamed(CheckoutPage.tag);
+        },
         color: Colors.lightBlueAccent,
         child: Text('Next', style: TextStyle(color: Colors.white)),
     )

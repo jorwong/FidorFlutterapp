@@ -1,5 +1,7 @@
+import 'package:fidortry/Screens/home_page2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fidortry/Provider/class.dart';
 
 class CheckoutPage extends StatefulWidget{
   static String tag = 'Checkoutpage';
@@ -8,16 +10,28 @@ class CheckoutPage extends StatefulWidget{
   }
 
 class _CheckoutPageState extends State<CheckoutPage>{
+
+    void makeTrans() async{
+      await postTransfer(1000).then((resp){
+        Navigator.of(context).pushNamed(HomePage2.tag);
+      });
+    }
+
     @override
     Widget build(BuildContext context) {
         final textDisplay= Text("hello");
         final amountDisplay= Text("hello");
 
-        final rowofButs= Row(children: <Widget>[
+        final rowofButs= Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
                     Expanded(
                       child: RaisedButton(
                         child: Text("Fidor"),
-                        onPressed: () => null,
+                        onPressed: () {
+                          makeTrans();
+                        },
                       ),
                     ),
                     Expanded(
@@ -33,8 +47,9 @@ class _CheckoutPageState extends State<CheckoutPage>{
                       ),
                     )
                   ]
-                  );
-        return Scaffold( 
+        );
+
+  return Scaffold( 
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: new Text("Checkout"),
@@ -59,5 +74,4 @@ class _CheckoutPageState extends State<CheckoutPage>{
       )
     );
     }
-    );
   }

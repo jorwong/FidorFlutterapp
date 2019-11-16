@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Insurance_forms_page.dart';
 import 'package:fidortry/Provider/class.dart';
@@ -18,10 +19,7 @@ class HomePage extends StatelessWidget {
     token=(prefs.getString('access'));
   }
 
-  //HomePage({Key key,@required this.token}) : super (key: key);
-
   static String tag = 'Homepage1';
-
   @override
   Widget build(BuildContext context) {
     getT();
@@ -32,6 +30,8 @@ class HomePage extends StatelessWidget {
     height: size.height,
     fit: BoxFit.fill
     );
+
+    
 
     final financeText= Text(
       token,
@@ -95,7 +95,7 @@ class HomePage extends StatelessWidget {
     );
   
 
-    return Scaffold( 
+    return new Scaffold( 
       backgroundColor: Colors.white,
       appBar: AppBar(
         actions: <Widget>[

@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage2>{
     if(token==""){
       getCust();
     }
+    //showInSnackBar();
     Size size = MediaQuery.of(context).size;
     final imageBG= Image.asset('',
     width: size.width,
@@ -57,6 +58,15 @@ class _HomePageState extends State<HomePage2>{
       ),
       )
     );
+
+
+    void showInSnackBar() {
+    Scaffold.of(context).showSnackBar(new SnackBar(
+        content: const Text('An Email Receipt Has Been Sent To You'),
+        action: SnackBarAction(
+            label: 'Okay', onPressed: (){}),
+    ));
+  }
 
     final button2 = SizedBox (
       width: 90.0,
