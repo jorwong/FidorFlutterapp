@@ -12,20 +12,25 @@ class HomePage2 extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage2>{
-  String token='\$';
-  void getCust() async{
-    getCustomers();
+  String token="";
+  String amount="";
+  String amountDisplay="";
+  void getTokensfromSP()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      getCustomers().then((Customer cust){
-        token+=cust.balance.toString();
-      });
+    token=(prefs.getString('access'));
+  }
+  void getCust() async{
+    getCustomers().then((Customer cust){
+        amount=cust.balance.toString();
+        amountDisplay="\$ $amount";
+        setState(() { });
     });
   }
 
   @override
   Widget build(BuildContext context) {
     if(token==""){
+      getTokensfromSP();
       getCust();
     }
     //showInSnackBar();
@@ -37,7 +42,7 @@ class _HomePageState extends State<HomePage2>{
     );
 
     final financeText= Text(
-      token,
+      amountDisplay,
       textAlign: TextAlign.center,
       style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),
     );
@@ -60,13 +65,19 @@ class _HomePageState extends State<HomePage2>{
     );
 
 
-    void showInSnackBar() {
-    Scaffold.of(context).showSnackBar(new SnackBar(
-        content: const Text('An Email Receipt Has Been Sent To You'),
-        action: SnackBarAction(
-            label: 'Okay', onPressed: (){}),
-    ));
-  }
+    void showInSnackBar(BuildContext contex) {
+      final snackBar = SnackBar(
+            content: Text('Yay! A SnackBar!'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          );
+      Scaffold.of(contex).showSnackBar(snackBar);
+      }
+
 
     final button2 = SizedBox (
       width: 90.0,
@@ -77,6 +88,8 @@ class _HomePageState extends State<HomePage2>{
         backgroundColor: Colors.lightBlue,
         onPressed: (){
           Navigator.of(context).pushNamed(InsuranceFormsPage.tag);
+          //showInSnackBar(context);
+
         },
         hoverElevation: 2.0,
         child: Icon(
@@ -119,7 +132,9 @@ class _HomePageState extends State<HomePage2>{
       )
         ],
       ),
-      body: Container(
+      body: Builder(
+        builder: (context) =>
+      Container(
         margin: const EdgeInsets.only(top: 180.0),
         child: ListView(
           shrinkWrap: true,
@@ -144,7 +159,7 @@ class _HomePageState extends State<HomePage2>{
             )
           ],
       ),
-    )
+    ))
     );
   }
 }

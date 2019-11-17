@@ -11,6 +11,28 @@ class CheckoutPage extends StatefulWidget{
 
 class _CheckoutPageState extends State<CheckoutPage>{
 
+    Future<void> _askForConfirmation() async {
+    return await showDialog<void>(
+      context: context,
+      builder: (context)=>
+      AlertDialog(
+        title: Text("Confirm the Payment of \$1000 ?"),
+        actions: <Widget>[
+          MaterialButton(
+            child: Text("Confirm"),
+            onPressed: (){
+              makeTrans();
+            },
+          ),
+          MaterialButton(
+            child: Text("Back"),
+            onPressed: ()=> Navigator.pop(context),
+          )
+        ],
+      )
+    );
+  }
+
     void makeTrans() async{
       await postTransfer(1000).then((resp){
         Navigator.push(context, new MaterialPageRoute(
@@ -33,7 +55,7 @@ class _CheckoutPageState extends State<CheckoutPage>{
                       child: RaisedButton(
                         child: Text("Fidor"),
                         onPressed: () {
-                          makeTrans();
+                          _askForConfirmation();
                         },
                       ),
                     ),

@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<String> getToken() async{
-  String code='18866d007c024a3c5ea9bf665e6eda5f';
+  String code='ce97f212b328d33217da66feeb9b5223';
   final response = await http.post('http://apm.sandboxpresales.fidorfzco.com/oauth/token?grant_type=authorization_code&client_id=2d9f97613542093e&client_secret=1f527b70f6c8dc24e7f8e44b8a7cd5b7&code='+code+'&redirect_uri=http://localhost:3000/OAuth2callback');
   print (response.statusCode);
   Map<String, dynamic> jsonn= json.decode(response.body);
