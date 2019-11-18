@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage2>{
   String token="";
   String amount="";
   String amountDisplay="";
+  int control=1;
   void getTokensfromSP()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token=(prefs.getString('access'));
@@ -23,19 +24,35 @@ class _HomePageState extends State<HomePage2>{
     getCustomers().then((Customer cust){
         amount=cust.balance.toString();
         amountDisplay="\$ $amount";
-        setState(() { });
+        setState(() { 
+          control=2;
+          setControl(2);
+        });
     });
+  }
+
+  void setControl(int num) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('control', num);
+  }
+
+  void getControl() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    control=(prefs.getInt('control'));
   }
 
   @override
   Widget build(BuildContext context) {
+
+    if(control==1){
+      getCust();
+    }
     if(token==""){
       getTokensfromSP();
-      getCust();
     }
     //showInSnackBar();
     Size size = MediaQuery.of(context).size;
-    final imageBG= Image.asset('',
+    final imageBG= Image.asset('lib/images/homepage.png',
     width: size.width,
     height: size.height,
     fit: BoxFit.fill
@@ -87,6 +104,7 @@ class _HomePageState extends State<HomePage2>{
         heroTag: '2nd',
         backgroundColor: Colors.lightBlue,
         onPressed: (){
+          setControl(1);
           Navigator.of(context).pushNamed(InsuranceFormsPage.tag);
           //showInSnackBar(context);
 
@@ -120,8 +138,16 @@ class _HomePageState extends State<HomePage2>{
     );
   
 
-    return Scaffold( 
-      backgroundColor: Colors.white,
+    return MaterialApp(
+      title: 'Welcome to Flutter',
+      home: Container(
+        height: 100,
+        width: 100,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("lib/asset/homepage.png"), fit: BoxFit.fitHeight)),
+      child: Scaffold( 
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
@@ -159,7 +185,10 @@ class _HomePageState extends State<HomePage2>{
             )
           ],
       ),
-    ))
+    ) )
+      )
+    )
     );
+    
   }
 }
