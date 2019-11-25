@@ -5,11 +5,13 @@ import 'package:image_picker/image_picker.dart';
 
 class InsuranceFormsPage extends StatefulWidget {
   static String tag ='Insuranceformpage';
+  int amount;
   @override
   _InsuranceFormsPageState createState() => _InsuranceFormsPageState();
 }
 
 class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
+  TextEditingController amountText = TextEditingController();
   File _pickedPicture;
   void _takepicture() async {
     final imageSource = await showDialog<ImageSource>(
@@ -51,16 +53,17 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
     final producttyp= TextFormField(
       keyboardType: TextInputType.text,
       autofocus: false,
-      decoration: InputDecoration(hintText: 'Product Type',
+      decoration: InputDecoration(hintText: 'Product Name',
       contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
 
     final somepara= TextFormField(
+      controller: amountText,
       keyboardType: TextInputType.text,
       autofocus: false,
-      decoration: InputDecoration(hintText: 'Para',
+      decoration: InputDecoration(hintText: 'Amount',
       contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
@@ -80,6 +83,7 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
     );
 
     final NextButton= Material (
+      
       borderRadius: BorderRadius.circular(30.0),
       shadowColor: Colors.lightBlueAccent,
       elevation: 5.0,
@@ -87,7 +91,8 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
         minWidth: 200.0,
         height: 42,
         onPressed:(){
-          Navigator.of(context).pushNamed(CheckoutPage.tag);
+          int amountTrans= int.parse(amountText.text);
+          Navigator.push(context,MaterialPageRoute(builder: (context)=> CheckoutPage(amountsGGTrans: amountTrans)));
         },
         color: Colors.lightBlueAccent,
         child: Text('Next', style: TextStyle(color: Colors.white)),
@@ -101,8 +106,11 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
     );
 
     return Scaffold(
+      
       backgroundColor: Colors.white,
+      
       appBar: AppBar(
+        title: Text("Insurance", style:  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.arrow_back_ios),
