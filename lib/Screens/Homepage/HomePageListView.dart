@@ -59,7 +59,7 @@ class HomeListView extends StatelessWidget {
                               aspectRatio: 2,
                               child: Image.asset(
                                 homeData.imagePath,
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                               ),
                             ),
                             Container(
