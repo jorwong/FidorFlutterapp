@@ -6,7 +6,7 @@ import 'package:fidortry/Provider/class.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage2 extends StatefulWidget {
   static String tag = 'Loginpage';
   String token;
   @override
@@ -15,7 +15,7 @@ class LoginPage extends StatefulWidget {
 Future navigateToSubPage(context)async {
   Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage2()));
 }
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage2> {
     
     @override
     Widget build(BuildContext context) {
