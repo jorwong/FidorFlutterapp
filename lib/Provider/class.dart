@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uuid/uuid.dart';
 
 Future<String> getToken() async{
-  String code='c41bba07b4e85d7a9db0a00377a8d63e';
+  String code='1e59c4a71aedc0dfcbd74e19ec2db6c7';
   final response = await http.post('http://apm.sandboxpresales.fidorfzco.com/oauth/token?grant_type=authorization_code&client_id=2d9f97613542093e&client_secret=1f527b70f6c8dc24e7f8e44b8a7cd5b7&code='+code+'&redirect_uri=http://localhost:3000/OAuth2callback');
   print (response.statusCode);
   Map<String, dynamic> jsonn= json.decode(response.body);
@@ -32,6 +33,7 @@ Future<Customer> getCustomers() async{
 }
 
 Future<String> postTransfer(int amountTrans) async{
+  var uuid = Uuid();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token=(prefs.getString('access'));
   final response =await http.post('http://eg-api.sandboxpresales.fidorfzco.com/fidor_banking/internal_transfers',
@@ -39,14 +41,14 @@ Future<String> postTransfer(int amountTrans) async{
   {
   "account_id": "79054921",
   "receiver": "26857779",
-  "external_uid": "9ur6hhfgdg355iu8",
+  "external_uid": uuid.v4() ,
   "amount": amountTrans,
   "subject": "my share of yesterday evening"
   }),
   headers: {
     'Content-Type':"application/json",
     'Accept':"application/vnd.fidor.de; version=1,text/json",
-    'Authorization':"Bearer 39IbbUEjqp8eqW7W4DBzcy:7IHVy881T73NmLTYwPJZjs"
+    'Authorization':"Bearer "+ token
   });
   print(response.statusCode.toString());
   return (response.statusCode.toString());

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'Screens/login_page.dart';
 import 'Screens/Insurance_forms_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,13 +21,13 @@ class MyApp extends StatelessWidget {
   };
   @override
   Widget build(BuildContext context) {
-    getToken(); //enable when u want to use the API
+    //getToken(); //enable when u want to use the API
     return MaterialApp(title: 'hihi',
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(
+    theme: ThemeData( 
       primarySwatch: Colors.lightBlue
       ),
-      home: LoginPage(),
+      home: HomePageScreen(),
       routes: routes,
     );
   }

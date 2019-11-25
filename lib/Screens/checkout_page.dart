@@ -4,24 +4,27 @@ import 'package:flutter/material.dart';
 import 'package:fidortry/Provider/class.dart';
 
 class CheckoutPage extends StatefulWidget{
+  int amountsGGTrans;
+  CheckoutPage({Key key, @required this.amountsGGTrans}) : super(key: key);
   static String tag = 'Checkoutpage';
   @override
-  _CheckoutPageState createState() => new _CheckoutPageState();
+  _CheckoutPageState createState() => new _CheckoutPageState(amountsGGTrans);
   }
 
 class _CheckoutPageState extends State<CheckoutPage>{
-
-    Future<void> _askForConfirmation() async {
+  int  recordObject;
+ _CheckoutPageState(this. recordObject);
+  Future<void> _askForConfirmation() async {
     return await showDialog<void>(
       context: context,
       builder: (context)=>
       AlertDialog(
-        title: Text("Confirm the Payment of \$1000 ?"),
+        title: Text("Confirm the Payment of \$$recordObject ?"),
         actions: <Widget>[
           MaterialButton(
             child: Text("Confirm"),
             onPressed: (){
-              makeTrans();
+              makeTrans(recordObject);
             },
           ),
           MaterialButton(
@@ -33,8 +36,8 @@ class _CheckoutPageState extends State<CheckoutPage>{
     );
   }
 
-    void makeTrans() async{
-      await postTransfer(1000).then((resp){
+    void makeTrans(int amount) async{
+      await postTransfer(amount).then((resp){
         Navigator.push(context, new MaterialPageRoute(
           builder: (context) =>
               new HomePage2()

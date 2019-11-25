@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage2>{
 
   @override
   Widget build(BuildContext context) {
-
+    getControl();
     if(control==1){
       getCust();
     }
@@ -163,6 +163,7 @@ class _HomePageState extends State<HomePage2>{
       Container(
         margin: const EdgeInsets.only(top: 180.0),
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
