@@ -3,8 +3,12 @@ import "package:fidortry/Screens/Homepage/HomePageTheme.dart";
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-
+import 'package:fidortry/Screens/InsuranceFormPage/form_fields.dart';
 import 'package:fidortry/Provider/homeListData.dart';
+
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> FormFieldsExampleForm()));
+}
 
 class HomeListView extends StatelessWidget {
   const HomeListView(
@@ -20,6 +24,9 @@ class HomeListView extends StatelessWidget {
   final AnimationController animationController;
   final Animation<dynamic> animation;
 
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> FormFieldsExampleForm()));
+}
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -37,6 +44,7 @@ class HomeListView extends StatelessWidget {
                 splashColor: Colors.transparent,
                 onTap: () {
                   callback();
+                  navigateToSubPage(context);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -197,7 +205,9 @@ class HomeListView extends StatelessWidget {
                               borderRadius: const BorderRadius.all(
                                 Radius.circular(32.0),
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                navigateToSubPage(context);
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(

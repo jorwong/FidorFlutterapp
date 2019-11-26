@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:fidortry/Provider/class.dart';
 
 class CheckoutPage extends StatefulWidget {
   static String tag = 'Checkoutpage';
@@ -44,30 +46,31 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return Container(
       child: Stack(
         children: <Widget>[
-          Image.asset("images/shoe_$selected.png",), //This
+          Image.asset("lib/asset/iphone-xr-black.png",), //This
           // should be a paged
           // view.
           Positioned(child: appBar(),top: 0,),
-          Positioned(child: FloatingActionButton(
-            elevation: 2,
-            child:Image.asset(favourite? "images/heart_icon.png" : "images/heart_icon_disabled.png",
-              width: 30,
-              height: 30,),
-              backgroundColor: Colors.white,
-              onPressed: (){
-               setState(() {
-                 favourite = !favourite;
-               });
-              }
-              ),
-            bottom: 0,
-            right: 20,
-          ),
+          // Positioned(child: FloatingActionButton(
+          //   elevation: 2,
+          //   child:Image.asset(favourite? "images/heart_icon.png" : "images/heart_icon_disabled.png",
+          //     width: 30,
+          //     height: 30,),
+          //     backgroundColor: Colors.white,
+          //     onPressed: (){
+          //      setState(() {
+          //        favourite = !favourite;
+          //      });
+          //     }
+          //     ),
+          //   bottom: 0,
+          //   right: 20,
+          // ),
 
         ],
       ),
     );
   }
+
 
 
   Widget appBar(){
@@ -77,23 +80,28 @@ class _CheckoutPageState extends State<CheckoutPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Image.asset("images/back_button.png"),
+          IconButton(
+            icon: new Image.asset("lib/asset/back_button.png"),
+            onPressed: () {
+              Navigator.pop(context);
+            },),
           Container(
             child: Column(
              children: <Widget>[
-               Text("MEN'S ORIGINAL",style: TextStyle(
-                 fontWeight: FontWeight.w100,
-                 fontSize: 14
-               ),),
-               Text("Smiths Shoes", style: TextStyle(
-                 fontSize: 24,
+               Text("Checkout",style: TextStyle(
                  fontWeight: FontWeight.bold,
+                 fontSize: 24
+               ),),
+               Text("Insurance for IPhone-XR", style: TextStyle(
+                 fontSize: 14,
+                 fontWeight: FontWeight.w100,
                  color: Color(0xFF2F2F3E)
                ),),
              ],
             ),
+            
           ),
-          Image.asset("images/bag_button.png", width: 27, height: 30,),
+              spaceHorizontal(22),
         ],
       ),
     );
@@ -115,7 +123,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         children: <Widget>[
           description(),
           spaceVertical(50),
-          property(),
+          //property(),
         ],
       ),
     );
@@ -123,11 +131,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   Widget description(){
     return Text(
-      "A style icon gets some love from one of today's top "
-          "trendsetters. Pharrell Williams puts his creative spin on these "
-          "shoes, which have all the clean, classicdetails of the beloved Stan Smith.",
-      textAlign: TextAlign.justify,
-      style: TextStyle(height: 1.5, color: Color(0xFF6F8398)),);
+      "Product: IPhone X-R \n"
+      "Id: 7392084-13840 \n"
+      "Price: \$1500 \n"
+      "Receipt Provided: Yes",
+      textAlign: TextAlign.left,
+      
+      style: TextStyle(height: 1.5, color: Color(0xFF6F8398),fontSize: 15),);
   }
 
   Widget property(){
@@ -148,50 +158,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
               ),
               spaceVertical(10),
-              colorSelector(),
+              //colorSelector(),
             ],
           ),
           size()
-        ],
-      ),
-    );
-  }
-
-  Widget colorSelector(){
-    return Container(
-      child: Row(
-        children: <Widget>[
-          ColorTicker(color: Colors.blue,selected: selected == "blue",
-              selectedCallback:
-                  (){
-                setState(() {
-                  selected = "blue";
-                });
-              }
-          ),
-
-          ColorTicker(color: Colors.green,selected: selected == "green",
-              selectedCallback:
-                  (){
-                setState(() {
-                  selected = "green";
-                });
-              }),
-
-          ColorTicker(color: Colors.yellow,selected: selected == "yellow",
-            selectedCallback: (){
-              setState(() {
-                selected = "yellow";
-              });
-            },
-          ),
-          ColorTicker(color: Colors.pink,selected: selected == "pink",
-            selectedCallback: (){
-              setState(() {
-                selected = "pink";
-              });
-            },
-          ),
         ],
       ),
     );
@@ -221,8 +191,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 color: Color(0xFF2F2F3E)
             ),
           ),
-        )
-
+        ),
       ],
     );
   }
@@ -238,15 +207,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          FlatButton(child: Text("ADD TO BAG +",
+          FlatButton(child: Text("Fidor Pay",
             style: TextStyle(
-                fontSize: 14,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF2F2F3E)
             ),
           ), color: Colors.transparent,
-            onPressed: (){},),
-          Text(r"$95",
+            onPressed: (){
+              _onAlertButtonsPressed(context);
+            },),
+          Text(r"$1000",
             style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w100,
@@ -262,7 +233,39 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
 
 
-
+_onAlertButtonsPressed(context) {
+    Alert(
+      context: context,
+      type: AlertType.info,
+      title: "Confirm Transaction?",
+      desc: "You will be paying \$1000 for the insurance",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "Confirm",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => {
+            if(identical(postTransfer(1000),201)){
+              
+            }
+          },
+          color: Color.fromRGBO(0, 179, 134, 1.0),
+        ),
+        DialogButton(
+          child: Text(
+            "Cancel",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(116, 116, 191, 1.0),
+            Color.fromRGBO(52, 138, 199, 1.0)
+          ]),
+        )
+      ],
+    ).show();
+  }
 
   ///************** UTILITY WIDGET ********************************************/
 
@@ -274,36 +277,4 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return SizedBox(width: size,);
   }
  /***** End */
-}
-
-
-class ColorTicker extends StatelessWidget{
-  final Color color;
-  final bool selected;
-  final VoidCallback selectedCallback;
-  ColorTicker({this.color,this.selected,this.selectedCallback});
-
-
-  @override
-  Widget build(BuildContext context) {
-    print(selected);
-    return
-      GestureDetector(
-        onTap: (){
-          selectedCallback();
-        },
-        child: Container(
-            padding: EdgeInsets.all(7),
-            margin: EdgeInsets.all(5),
-            width: 30,
-            height: 30,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: color.withOpacity(0.7)),
-                 child: selected ? Image.asset("images/checker.png") :
-               Container(),
-        )
-      );
-  }
-
 }

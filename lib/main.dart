@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     //getToken(); //enable when u want to use the API
     return MaterialApp(title: 'hihi',
     debugShowCheckedModeBanner: false,
-    home: new LoginPage(),
+    home: new CheckoutPage(),
     routes: routes,
     );
   }

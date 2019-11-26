@@ -108,7 +108,9 @@ class _HomePageScreenState extends State<HomePageScreen>
                                               curve: Curves.fastOutSlowIn)));
                               animationController.forward();
                               return HomeListView(
-                                callback: () {},
+                                callback: () {
+
+                                },
                                 homeData: homeList[index],
                                 animation: animation,
                                 animationController: animationController,
@@ -230,7 +232,6 @@ class _HomePageScreenState extends State<HomePageScreen>
                       //   isDatePopupOpen = true;
                       // });
                       // this is where we go to the next page
-                      navigateToSubPage(context);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(

@@ -51,6 +51,7 @@ Future<String> postTransfer(int amountTrans) async{
     'Authorization':"Bearer "+ token
   });
   print(response.statusCode.toString());
+  
   return (response.statusCode.toString());
 }
 
