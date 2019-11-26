@@ -5,10 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import "HomePageTheme.dart";
+import 'package:fidortry/Screens/InsuranceFormPage/form_fields.dart';
 
 class HomePageScreen extends StatefulWidget {
+  static String tag = 'Homepage';
   @override
   _HomePageScreenState createState() => _HomePageScreenState();
+}
+
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> FormFieldsExampleForm()));
 }
 
 class _HomePageScreenState extends State<HomePageScreen>
@@ -224,6 +230,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                       //   isDatePopupOpen = true;
                       // });
                       // this is where we go to the next page
+                      navigateToSubPage(context);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(

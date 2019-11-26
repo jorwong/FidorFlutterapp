@@ -12,6 +12,7 @@ import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 import 'package:fidortry/Screens/loginPage/LoginPage.dart';
 import "package:fidortry/Screens/InsuranceFormPage/form_fields.dart";
 import 'package:fidortry/Screens/InsuranceFormPage/theme.dart';
+import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,16 +20,17 @@ class MyApp extends StatelessWidget {
 
   final routes = <String, WidgetBuilder>{
     //LoginPage.tag: (context)=>LoginPage(),
-    HomePage.tag: (context)=>HomePage2(),
+    HomePageScreen.tag: (context)=>HomePageScreen(),
     InsuranceFormsPage.tag: (context)=>InsuranceFormsPage(),
     CheckoutPage.tag: (context)=>CheckoutPage(),
+    FormFieldsExampleForm.tag: (context)=>FormFieldsExampleForm(),
   };
   @override
   Widget build(BuildContext context) {
     //getToken(); //enable when u want to use the API
     return MaterialApp(title: 'hihi',
     debugShowCheckedModeBanner: false,
-    home: new FormFieldsExampleForm(),
+    home: new LoginPage(),
     routes: routes,
     );
   }

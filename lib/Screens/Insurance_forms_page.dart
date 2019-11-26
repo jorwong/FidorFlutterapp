@@ -92,7 +92,7 @@ class _InsuranceFormsPageState extends State<InsuranceFormsPage> {
         height: 42,
         onPressed:(){
           int amountTrans= int.parse(amountText.text);
-          Navigator.push(context,MaterialPageRoute(builder: (context)=> CheckoutPage(amountsGGTrans: amountTrans)));
+          Navigator.push(context,MaterialPageRoute(builder: (context)=> CheckoutPage2(amountsGGTrans: amountTrans)));
         },
         color: Colors.lightBlueAccent,
         child: Text('Next', style: TextStyle(color: Colors.white)),

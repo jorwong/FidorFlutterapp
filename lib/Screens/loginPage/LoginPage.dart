@@ -3,12 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "package:fidortry/Screens/loginPage/LoginPageTheme.dart" as Theme;
 import 'package:fidortry/Screens/loginPage/bubble_indication_painter.dart';
+import 'package:fidortry/Screens/Homepage/Home_page_remodel.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
 
   @override
   _LoginPageState createState() => new _LoginPageState();
+}
+
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
 }
 
 class _LoginPageState extends State<LoginPage>
@@ -333,7 +338,7 @@ class _LoginPageState extends State<LoginPage>
                       ),
                     ),
                     onPressed: () =>
-                        showInSnackBar("Login button pressed")),
+                        navigateToSubPage(context)),
               ),
             ],
           ),

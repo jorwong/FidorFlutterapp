@@ -5,9 +5,15 @@ import "package:fidortry/Screens/InsuranceFormPage/form_fields_form_bloc.dart";
 import 'package:fidortry/Screens/InsuranceFormPage/widgets.dart';
 import 'package:form_bloc/form_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
 import 'dart:io';
 
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> CheckoutPage()));
+}
+
 class FormFieldsExampleForm extends StatelessWidget {
+  static String tag ='Insuranceformpage';
   @override
   Widget build(BuildContext context) {
     return BlocProvider<FormFieldsExampleFormBloc>(

@@ -3,15 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fidortry/Provider/class.dart';
 
-class CheckoutPage extends StatefulWidget{
+class CheckoutPage2 extends StatefulWidget{
   int amountsGGTrans;
-  CheckoutPage({Key key, @required this.amountsGGTrans}) : super(key: key);
+  CheckoutPage2({Key key, @required this.amountsGGTrans}) : super(key: key);
   static String tag = 'Checkoutpage';
   @override
   _CheckoutPageState createState() => new _CheckoutPageState(amountsGGTrans);
   }
 
-class _CheckoutPageState extends State<CheckoutPage>{
+class _CheckoutPageState extends State<CheckoutPage2>{
   int  recordObject;
  _CheckoutPageState(this. recordObject);
   Future<void> _askForConfirmation() async {
