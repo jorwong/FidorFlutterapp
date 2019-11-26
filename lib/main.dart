@@ -10,6 +10,8 @@ import 'Screens/Insurance_forms_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 import 'package:fidortry/Screens/loginPage/LoginPage.dart';
+import "package:fidortry/Screens/InsuranceFormPage/form_fields.dart";
+import 'package:fidortry/Screens/InsuranceFormPage/theme.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,11 +28,8 @@ class MyApp extends StatelessWidget {
     //getToken(); //enable when u want to use the API
     return MaterialApp(title: 'hihi',
     debugShowCheckedModeBanner: false,
-    theme: ThemeData( 
-      primarySwatch: Colors.lightBlue
-      ),
-      home: new LoginPage(),
-      routes: routes,
+    home: new FormFieldsExampleForm(),
+    routes: routes,
     );
   }
 }
