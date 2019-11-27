@@ -75,7 +75,10 @@ class FormFieldsExampleForm extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
-                      onPressed: formBloc.submit,
+                      onPressed: (){
+                        formBloc.submit;
+                        navigateToSubPage(context);
+                        },
                       child: Center(child: Text('SUBMIT')),
                     ),
                   ),

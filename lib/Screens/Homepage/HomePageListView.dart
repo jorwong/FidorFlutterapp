@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:fidortry/Screens/InsuranceFormPage/form_fields.dart';
 import 'package:fidortry/Provider/homeListData.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 Future navigateToSubPage(context)async {
   Navigator.push(context, MaterialPageRoute(builder: (context)=> FormFieldsExampleForm()));
@@ -44,7 +45,7 @@ Future navigateToSubPage(context)async {
                 splashColor: Colors.transparent,
                 onTap: () {
                   callback();
-                  navigateToSubPage(context);
+                  _onAlertWithCustomContentPressed(context);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -206,7 +207,8 @@ Future navigateToSubPage(context)async {
                                 Radius.circular(32.0),
                               ),
                               onTap: () {
-                                navigateToSubPage(context);
+                                _onAlertWithCustomContentPressed(context);
+
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -231,3 +233,38 @@ Future navigateToSubPage(context)async {
     );
   }
 }
+
+_onAlertWithCustomContentPressed(context) {
+    Alert(
+        context: context,
+        title: "Is this Your Phone?",
+        content: Column(
+          children: <Widget>[
+            Text("Model: IPhone-XR"),
+            Text("Id: 7392084-13840"),
+            Text("Model: IPhone-XR"),
+            // TextField(
+            //   decoration: InputDecoration(
+            //     icon: Icon(Icons.account_circle),
+            //     labelText: 'Username',
+            //   ),
+            // ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                icon: Icon(Icons.lock),
+                labelText: 'Password',
+              ),
+            ),
+          ],
+        ),
+        buttons: [
+          DialogButton(
+            onPressed: () => navigateToSubPage(context),
+            child: Text(
+              "LOGIN",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          )
+        ]).show();
+  }

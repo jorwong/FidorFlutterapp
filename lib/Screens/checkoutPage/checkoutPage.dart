@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:fidortry/Provider/class.dart';
+import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 
 class CheckoutPage extends StatefulWidget {
   static String tag = 'Checkoutpage';
@@ -10,6 +11,10 @@ class CheckoutPage extends StatefulWidget {
 
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
+}
+
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
@@ -247,7 +252,7 @@ _onAlertButtonsPressed(context) {
           ),
           onPressed: () => {
             if(identical(postTransfer(1000),201)){
-              
+              navigateToSubPage(context)
             }
           },
           color: Color.fromRGBO(0, 179, 134, 1.0),
