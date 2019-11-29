@@ -33,6 +33,7 @@ dependencies:
   flutter_form_bloc: ^0.5.0
   flutter_bloc: ^1.0.0
   rflutter_alert: ^1.0.2
+  flushbar: ^1.9.1
 
 
   

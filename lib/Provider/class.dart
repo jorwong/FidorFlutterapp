@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
@@ -11,8 +12,28 @@ Future navigateToSubPage(context)async {
   Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
 }
 
+showSubmitRequestSnackBar(BuildContext context) async {
+
+  Flushbar(
+    flushbarPosition: FlushbarPosition.BOTTOM,
+    message: "Transaction Completed. Redirecting to HomePage...",
+    flushbarStyle: FlushbarStyle.FLOATING,
+    margin: EdgeInsets.all(8),
+    borderRadius: 8,
+    icon: Icon(
+    Icons.check_circle_outline,
+    size: 28.0,
+    color: Colors.blue[300],
+    ),
+    duration: Duration(seconds: 3),
+    leftBarIndicatorColor: Colors.blue[300],
+  )
+    ..show(context).then((r)=> Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HomePageScreen())));
+}
+
 Future<String> getToken() async{
-  String code='2d0c2918b7fae166bfcc3da9f07661c6';
+  String code='ff772475d172d4c6aa7b45d6dc9726a9';
   final response = await http.post('http://apm.sandboxpresales.fidorfzco.com/oauth/token?grant_type=authorization_code&client_id=2d9f97613542093e&client_secret=1f527b70f6c8dc24e7f8e44b8a7cd5b7&code='+code+'&redirect_uri=http://localhost:3000/OAuth2callback');
   print (response.statusCode);
   Map<String, dynamic> jsonn= json.decode(response.body);
@@ -59,7 +80,8 @@ Future<void> postTransfer(int amountTrans,BuildContext context) async{
   print(response.statusCode.toString());
 
   // return (response.statusCode.toString());
-  navigateToSubPage(context);
+  //navigateToSubPage(context);
+  showSubmitRequestSnackBar(context);
 }
 
 class Customer{

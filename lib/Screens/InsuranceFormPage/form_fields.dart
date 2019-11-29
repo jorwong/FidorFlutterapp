@@ -8,8 +8,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
 import 'dart:io';
 
-Future navigateToSubPage(context)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> CheckoutPage()));
+Future navigateToSubPage(context,int amount)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> CheckoutPage(amount: amount)));
 }
 
 class FormFieldsExampleForm extends StatelessWidget {
@@ -43,7 +43,24 @@ class FormFieldsExampleForm extends StatelessWidget {
                   TextFieldBlocBuilder(
                     textFieldBloc: formBloc.textField,
                     decoration: InputDecoration(
-                      labelText: 'TextFieldBlocBuilder',
+                      labelText: 'Phone Model',
+                      prefixText: 'IPhone-XR 256GB',
+                      prefixIcon: Icon(Icons.sentiment_very_satisfied),
+                    ),
+                    errorBuilder: (context, error) {
+                      switch (error) {
+                        case FieldBlocValidatorsErrors.requiredTextFieldBloc:
+                          return 'You must write amazing text.';
+                          break;
+                        default:
+                          return 'This text is nor valid.';
+                      }
+                    },
+                  ),
+                  TextFieldBlocBuilder(
+                    textFieldBloc: formBloc.textFieldamt,
+                    decoration: InputDecoration(
+                      labelText: 'Amount Paid',
                       prefixIcon: Icon(Icons.sentiment_very_satisfied),
                     ),
                     errorBuilder: (context, error) {
@@ -72,12 +89,13 @@ class FormFieldsExampleForm extends StatelessWidget {
                     booleanFieldBloc: formBloc.booleanField,
                     body: Text('CheckboxFieldBlocBuilder'),
                   ),
+
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RaisedButton(
                       onPressed: (){
                         formBloc.submit;
-                        navigateToSubPage(context);
+                        formBloc.Navigate(context);
                         },
                       child: Center(child: Text('SUBMIT')),
                     ),
