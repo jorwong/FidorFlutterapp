@@ -50,9 +50,10 @@ class _LoginPageState extends State<LoginPage2> {
          navigateToSubPage(context);
         },
         color: Colors.lightBlueAccent,
-        child: Text('Log In', style: TextStyle(color: Colors.white)),
+        child: Text('Log In', style: TextStyle(color: Colors.black),
        ),
       ),
+    )
     );
 
     

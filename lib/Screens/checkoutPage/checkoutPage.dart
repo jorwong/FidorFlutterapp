@@ -251,9 +251,7 @@ _onAlertButtonsPressed(context) {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onPressed: () => {
-            if(identical(postTransfer(1000),201)){
-              navigateToSubPage(context)
-            }
+            postTransfer(1000,context)
           },
           color: Color.fromRGBO(0, 179, 134, 1.0),
         ),

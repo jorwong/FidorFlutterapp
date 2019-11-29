@@ -6,13 +6,14 @@ class Colors {
 
   const Colors();
 
-  static const Color loginGradientStart = const Color(0xFFfbab66);
-  static const Color loginGradientEnd = const Color(0xFFf7418c);
+  static const Color loginGradientStart = const Color.fromARGB(255,	21, 176, 151);
+  static const Color loginGradientEnd = const Color.fromARGB(255, 113, 247, 159);
 
   static const primaryGradient = const LinearGradient(
     colors: const [loginGradientStart, loginGradientEnd],
-    stops: const [0.0, 1.0],
+    stops: const [0.0, 8.0],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );
 }
+

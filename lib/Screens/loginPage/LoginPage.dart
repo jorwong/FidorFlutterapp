@@ -222,7 +222,7 @@ class _LoginPageState extends State<LoginPage>
                 elevation: 2.0,
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Container(
                   width: 300.0,
@@ -253,7 +253,7 @@ class _LoginPageState extends State<LoginPage>
                           ),
                         ),
                       ),
-                      Container(
+                      Container( //line in between login credentials
                         width: 250.0,
                         height: 1.0,
                         color: Colors.grey[400],
@@ -323,8 +323,9 @@ class _LoginPageState extends State<LoginPage>
                       tileMode: TileMode.clamp),
                 ),
                 child: MaterialButton(
-                    highlightColor: Colors.transparent,
-                    splashColor: Theme.Colors.loginGradientEnd,
+                    // highlightColor: Colors.transparent,
+                    // splashColor: Theme.Colors.loginGradientEnd,
+                    color: Colors.grey,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(

@@ -240,29 +240,28 @@ _onAlertWithCustomContentPressed(context) {
         title: "Is this Your Phone?",
         content: Column(
           children: <Widget>[
-            Text("Model: IPhone-XR"),
+            Text("Model: IPhone-XR 256GB"),
             Text("Id: 7392084-13840"),
-            Text("Model: IPhone-XR"),
             // TextField(
             //   decoration: InputDecoration(
             //     icon: Icon(Icons.account_circle),
             //     labelText: 'Username',
             //   ),
             // ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                icon: Icon(Icons.lock),
-                labelText: 'Password',
-              ),
-            ),
+            // TextField(
+            //   obscureText: true,
+            //   decoration: InputDecoration(
+            //     icon: Icon(Icons.lock),
+            //     labelText: 'Confirm',
+            //   ),
+            // ),
           ],
         ),
         buttons: [
           DialogButton(
             onPressed: () => navigateToSubPage(context),
             child: Text(
-              "LOGIN",
+              "Confirm",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           )

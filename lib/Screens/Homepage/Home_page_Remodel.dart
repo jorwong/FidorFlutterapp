@@ -1,13 +1,18 @@
 import 'dart:ui';
+import 'package:fidortry/Provider/class.dart';
+
 import "HomePageListView.dart";
 import "package:fidortry/Provider/homeListData.dart";
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import "HomePageTheme.dart";
+import 'package:fidortry/Provider/class.dart';
 import 'package:fidortry/Screens/InsuranceFormPage/form_fields.dart';
 
+String amount="";
 class HomePageScreen extends StatefulWidget {
+  
   static String tag = 'Homepage';
   @override
   _HomePageScreenState createState() => _HomePageScreenState();
@@ -36,6 +41,11 @@ class _HomePageScreenState extends State<HomePageScreen>
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 200));
     return true;
+  }
+
+  Future<Customer> getCust() async{
+    return await getCustomers();
+
   }
 
   @override
@@ -208,6 +218,11 @@ class _HomePageScreenState extends State<HomePageScreen>
     );
   }
 
+  // void getCust() async{
+  //  amount= getCustomers().toString();
+  //  setState(() {});
+  // }
+
   Widget getTimeDateUI() {
     return Padding(
       padding: const EdgeInsets.only(left: 18, bottom: 16),
@@ -241,7 +256,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Choose date',
+                            'Available Balance: ',
                             style: TextStyle(
                                 fontWeight: FontWeight.w100,
                                 fontSize: 16,
@@ -250,13 +265,19 @@ class _HomePageScreenState extends State<HomePageScreen>
                           const SizedBox(
                             height: 8,
                           ),
-                          Text(
-                            "filler",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w100,
-                              fontSize: 16,
-                            ),
-                          ),
+                          FutureBuilder(
+                            future: getCust(),
+                            initialData: "Loading Data...",
+                            builder: (context, cust) {
+                              return Text(
+                                cust.data.balance.toString(),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: 16,
+                                ),
+                              );
+                            },
+                          )
                         ],
                       ),
                     ),

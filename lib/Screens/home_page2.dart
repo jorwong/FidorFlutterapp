@@ -20,16 +20,16 @@ class _HomePageState extends State<HomePage2>{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token=(prefs.getString('access'));
   }
-  void getCust() async{
-    getCustomers().then((Customer cust){
-        amount=cust.balance.toString();
-        amountDisplay="\$ $amount";
-        setState(() { 
-          control=2;
-          setControl(2);
-        });
-    });
-  }
+  // void getCust() async{
+  //   getCustomers().then((Customer cust){
+  //       amount=cust.balance.toString();
+  //       amountDisplay="\$ $amount";
+  //       setState(() { 
+  //         control=2;
+  //         setControl(2);
+  //       });
+  //   });
+  // }
 
   void setControl(int num) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage2>{
   Widget build(BuildContext context) {
     getControl();
     if(control==1){
-      getCust();
+      //getCust();
     }
     if(token==""){
       getTokensfromSP();
