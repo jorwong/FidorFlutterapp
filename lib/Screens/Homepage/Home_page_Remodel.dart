@@ -269,13 +269,24 @@ class _HomePageScreenState extends State<HomePageScreen>
                             future: getCust(),
                             initialData: "Loading Data...",
                             builder: (context, cust) {
-                              return Text(
-                                cust.data.balance.toString(),
+                              if (cust.hasData) {
+                                return Text( 
+                                "\$"+cust.data.balance.toString(),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w100,
                                   fontSize: 16,
-                                ),
+                                ), 
                               );
+                              }
+                              else{
+                                return Text( 
+                                "Loading Data...",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: 16,
+                                ), 
+                              );
+                              }
                             },
                           )
                         ],
