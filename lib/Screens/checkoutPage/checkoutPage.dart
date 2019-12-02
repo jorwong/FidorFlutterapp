@@ -1,3 +1,4 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:fidortry/Provider/class.dart';
@@ -5,20 +6,43 @@ import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 
 class CheckoutPage extends StatefulWidget {
   static String tag = 'Checkoutpage';
-  CheckoutPage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  CheckoutPage({Key key, @required this.amount}) : super(key: key);
+  
+  final int amount;
+  final String title='checkout';
 
   @override
-  _CheckoutPageState createState() => _CheckoutPageState();
+  _CheckoutPageState createState() => _CheckoutPageState(amount);
 }
+
+showSubmitRequestSnackBar(BuildContext context) async {
+
+  Flushbar(
+    flushbarPosition: FlushbarPosition.BOTTOM,
+    message: "Request Successfully Saved",
+    icon: Icon(
+      Icons.info_outline,
+      size: 28.0,
+      color: Colors.red,
+    ),
+    backgroundColor: Colors.red,
+    duration: Duration(seconds: 5),
+    leftBarIndicatorColor: Colors.red,
+
+  )
+    ..show(context).then((r)=> Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HomePageScreen())));
+}
+
 
 Future navigateToSubPage(context)async {
   Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  int amountstate;
 
+  _CheckoutPageState(this.amountstate);
   String selected = "blue";
   bool favourite = false;
 
@@ -37,7 +61,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
 
               //Bottom Button
-              purchase()
+              purchase(amountstate)
           ],
           ),
       ),
@@ -206,7 +230,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
 
   ///************** BOTTOM BUTTON ********************************************/
-  Widget purchase(){
+  Widget purchase(int amt){
     return Container(
       padding: EdgeInsets.all(16),
       child: Row(
@@ -220,9 +244,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           ), color: Colors.transparent,
             onPressed: (){
-              _onAlertButtonsPressed(context);
+              _onAlertButtonsPressed(context,amt);
             },),
-          Text(r"$1000",
+          Text('\$$amt',
             style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w100,
@@ -238,12 +262,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
 
 
-_onAlertButtonsPressed(context) {
+_onAlertButtonsPressed(context,int amountbtn) {
     Alert(
       context: context,
       type: AlertType.info,
       title: "Confirm Transaction?",
-      desc: "You will be paying \$1000 for the insurance",
+      desc: "You will be paying \$$amountbtn for the insurance",
       buttons: [
         DialogButton(
           child: Text(
@@ -251,9 +275,7 @@ _onAlertButtonsPressed(context) {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onPressed: () => {
-            if(identical(postTransfer(1000),201)){
-              navigateToSubPage(context)
-            }
+            postTransfer(amountbtn,context)
           },
           color: Color.fromRGBO(0, 179, 134, 1.0),
         ),

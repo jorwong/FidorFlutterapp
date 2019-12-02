@@ -33,6 +33,7 @@ dependencies:
   flutter_form_bloc: ^0.5.0
   flutter_bloc: ^1.0.0
   rflutter_alert: ^1.0.2
+  flushbar: ^1.9.1
 
 
   
@@ -59,6 +60,9 @@ flutter:
   - lib/asset/Insurance.jpg
   - lib/asset/iphone-xr-black.png
   - lib/asset/back_button.png
+  - lib/asset/login.png
+  - lib/asset/logo.png
+  - lib/asset/logo_transparent.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

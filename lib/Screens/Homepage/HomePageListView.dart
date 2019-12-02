@@ -90,7 +90,7 @@ Future navigateToSubPage(context)async {
                                               CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Text(
-                                              homeData.titleTxt,
+                                              homeData.titleTxt, //Title
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w600,
@@ -113,16 +113,16 @@ Future navigateToSubPage(context)async {
                                                 const SizedBox(
                                                   width: 4,
                                                 ),
-                                                Icon(
-                                                  FontAwesomeIcons.mapMarkerAlt,
-                                                  size: 12,
-                                                  color: HomePageTheme
-                                                          .buildLightTheme()
-                                                      .primaryColor,
-                                                ),
+                                                // Icon(
+                                                //   FontAwesomeIcons.mapMarkerAlt,
+                                                //   size: 12,
+                                                //   color: HomePageTheme
+                                                //           .buildLightTheme()
+                                                //       .primaryColor,
+                                                // ),
                                                 Expanded(
-                                                  child: Text(
-                                                    '${homeData.dist.toStringAsFixed(1)} km to city',
+                                                  child: Text('',
+                                                    //'${homeData.dist.toStringAsFixed(1)} km to city',
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
@@ -174,16 +174,16 @@ Future navigateToSubPage(context)async {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
                                       children: <Widget>[
-                                        Text(
-                                          '\$${homeData.perNight}',
+                                        Text('',
+                                          // '\$${homeData.perNight}',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 22,
                                           ),
                                         ),
-                                        Text(
-                                          '/per night',
+                                        Text('',
+                                          // '/per night',
                                           style: TextStyle(
                                               fontSize: 14,
                                               color:
@@ -240,29 +240,28 @@ _onAlertWithCustomContentPressed(context) {
         title: "Is this Your Phone?",
         content: Column(
           children: <Widget>[
-            Text("Model: IPhone-XR"),
+            Text("Model: IPhone-XR 256GB"),
             Text("Id: 7392084-13840"),
-            Text("Model: IPhone-XR"),
             // TextField(
             //   decoration: InputDecoration(
             //     icon: Icon(Icons.account_circle),
             //     labelText: 'Username',
             //   ),
             // ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                icon: Icon(Icons.lock),
-                labelText: 'Password',
-              ),
-            ),
+            // TextField(
+            //   obscureText: true,
+            //   decoration: InputDecoration(
+            //     icon: Icon(Icons.lock),
+            //     labelText: 'Confirm',
+            //   ),
+            // ),
           ],
         ),
         buttons: [
           DialogButton(
             onPressed: () => navigateToSubPage(context),
             child: Text(
-              "LOGIN",
+              "Confirm",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           )

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   };
   @override
   Widget build(BuildContext context) {
-    //getToken(); //enable when u want to use the API
+    getToken(); //enable when u want to use the API
     return MaterialApp(title: 'hihi',
     debugShowCheckedModeBanner: false,
     home: new LoginPage(),

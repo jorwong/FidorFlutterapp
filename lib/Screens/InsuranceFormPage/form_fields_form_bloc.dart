@@ -1,8 +1,19 @@
+import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:form_bloc/form_bloc.dart';
 import 'dart:io';
 
+Future navigateToSubPage(context,int amount)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> CheckoutPage(amount: amount)));
+}
+
 class FormFieldsExampleFormBloc extends FormBloc<String, String> {
   final textField = TextFieldBloc(
+    validators: [FieldBlocValidators.requiredTextFieldBloc],
+  );
+
+  final textFieldamt = TextFieldBloc(
     validators: [FieldBlocValidators.requiredTextFieldBloc],
   );
 
@@ -25,12 +36,17 @@ class FormFieldsExampleFormBloc extends FormBloc<String, String> {
   @override
   List<FieldBloc> get fieldBlocs => [
         textField,
+        textFieldamt,
         booleanField,
         selectField1,
         selectField2,
         multiSelectField,
       ];
 
+
+  void Navigate(BuildContext context){
+    navigateToSubPage(context, textFieldamt.valueToInt);
+  }
   @override
   Stream<FormBlocState<String, String>> onSubmitting() async* {
     // Awesome logic...
@@ -41,7 +57,7 @@ class FormFieldsExampleFormBloc extends FormBloc<String, String> {
     print(selectField1.value);
     print(selectField2.value);
     print(multiSelectField.value);
-
+    
     await Future<void>.delayed(Duration(seconds: 2));
     yield state.toSuccess('Success');
 

@@ -37,7 +37,7 @@ class _CheckoutPageState extends State<CheckoutPage2>{
   }
 
     void makeTrans(int amount) async{
-      await postTransfer(amount).then((resp){
+      await postTransfer(amount,context).then((resp){
         Navigator.push(context, new MaterialPageRoute(
           builder: (context) =>
               new HomePage2()

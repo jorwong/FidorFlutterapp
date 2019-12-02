@@ -1,14 +1,22 @@
 import 'dart:ui';
+import 'package:fidortry/Provider/class.dart';
+import 'package:flushbar/flushbar.dart';
+
 import "HomePageListView.dart";
 import "package:fidortry/Provider/homeListData.dart";
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import "HomePageTheme.dart";
+import 'package:fidortry/Provider/class.dart';
 import 'package:fidortry/Screens/InsuranceFormPage/form_fields.dart';
 
+String recordState="";
+
 class HomePageScreen extends StatefulWidget {
+
   static String tag = 'Homepage';
+  String record;
   @override
   _HomePageScreenState createState() => _HomePageScreenState();
 }
@@ -19,6 +27,7 @@ Future navigateToSubPage(context)async {
 
 class _HomePageScreenState extends State<HomePageScreen>
     with TickerProviderStateMixin {
+
   AnimationController animationController;
   List<HomeListData> homeList = HomeListData.hotelList;
   final ScrollController _scrollController = ScrollController();
@@ -38,11 +47,30 @@ class _HomePageScreenState extends State<HomePageScreen>
     return true;
   }
 
+  Future<Customer> getCust() async{
+    return await getCustomers();
+
+  }
+
   @override
   void dispose() {
     animationController.dispose();
     super.dispose();
   }
+
+  void showFlushbar(BuildContext context){
+  Flushbar(
+  message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+  icon: Icon(
+    Icons.info_outline,
+    size: 28.0,
+    color: Colors.blue[300],
+    ),
+  duration: Duration(seconds: 3),
+  leftBarIndicatorColor: Colors.blue[300],
+)..show(context);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +91,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                 child: Column(
                   children: <Widget>[
                     getAppBarUI(),
+                    
                     Expanded(
                       child: NestedScrollView(
                         controller: _scrollController,
@@ -76,6 +105,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                                   children: <Widget>[
                                     getSearchBarUI(),
                                     getTimeDateUI(),
+                                    
                                   ],
                                 );
                               }, childCount: 1),
@@ -166,7 +196,9 @@ class _HomePageScreenState extends State<HomePageScreen>
                       animationController.forward();
 
                       return HomeListView(
-                        callback: () {},
+                        callback: () {
+                        
+                        },
                         homeData: homeList[index],
                         animation: animation,
                         animationController: animationController,
@@ -208,6 +240,11 @@ class _HomePageScreenState extends State<HomePageScreen>
     );
   }
 
+  // void getCust() async{
+  //  amount= getCustomers().toString();
+  //  setState(() {});
+  // }
+
   Widget getTimeDateUI() {
     return Padding(
       padding: const EdgeInsets.only(left: 18, bottom: 16),
@@ -241,22 +278,39 @@ class _HomePageScreenState extends State<HomePageScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Choose date',
+                            'Available Balance: ',
                             style: TextStyle(
-                                fontWeight: FontWeight.w100,
+                                fontWeight: FontWeight.bold,
                                 fontSize: 16,
-                                color: Colors.grey.withOpacity(0.8)),
+                                color: Colors.grey.withOpacity(0.8)),  
                           ),
                           const SizedBox(
                             height: 8,
                           ),
-                          Text(
-                            "filler",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w100,
-                              fontSize: 16,
-                            ),
-                          ),
+                          FutureBuilder(
+                            future: getCust(),
+                            initialData: "Loading Data...",
+                            builder: (context, cust) {
+                              if (cust.hasData) {
+                                return Text( 
+                                "\$"+cust.data.balance.toString(),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: 16,
+                                ), 
+                              );
+                              }
+                              else{
+                                return Text( 
+                                "Loading Data...",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: 16,
+                                ), 
+                              );
+                              }
+                            },
+                          )
                         ],
                       ),
                     ),
@@ -266,7 +320,7 @@ class _HomePageScreenState extends State<HomePageScreen>
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 6),
             child: Container(
               width: 1,
               height: 42,
@@ -297,9 +351,9 @@ class _HomePageScreenState extends State<HomePageScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Number of Rooms',
+                            'Bank',
                             style: TextStyle(
-                                fontWeight: FontWeight.w100,
+                                fontWeight: FontWeight.bold,
                                 fontSize: 16,
                                 color: Colors.grey.withOpacity(0.8)),
                           ),
@@ -307,7 +361,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                             height: 8,
                           ),
                           Text(
-                            '1 Room - 2 Adults',
+                            'Fidor Bank',
                             style: TextStyle(
                               fontWeight: FontWeight.w100,
                               fontSize: 16,
@@ -358,7 +412,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                     cursorColor: HomePageTheme.buildLightTheme().primaryColor,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'London...',
+                      hintText: 'Insurance...',
                     ),
                   ),
                 ),
@@ -432,7 +486,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '530 hotels found',
+                      '100 Products found',
                       style: TextStyle(
                         fontWeight: FontWeight.w100,
                         fontSize: 16,
@@ -452,19 +506,14 @@ class _HomePageScreenState extends State<HomePageScreen>
                     ),
                     onTap: () {
                       FocusScope.of(context).requestFocus(FocusNode());
-                      // Navigator.push<dynamic>(
-                      //   context,
-                      //   MaterialPageRoute<dynamic>(
-                      //       builder: (BuildContext context) => FiltersScreen(),
-                      //       fullscreenDialog: true),
-                      // );
+                      showFlushbar(context);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 8),
                       child: Row(
                         children: <Widget>[
                           Text(
-                            'Filtter',
+                            'Filter',
                             style: TextStyle(
                               fontWeight: FontWeight.w100,
                               fontSize: 16,
@@ -528,7 +577,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back),
+                    child: Icon(FontAwesomeIcons.powerOff),
                   ),
                 ),
               ),
@@ -573,7 +622,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                       onTap: () {},
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(FontAwesomeIcons.mapMarkerAlt),
+                        child: Icon(FontAwesomeIcons.box),
                       ),
                     ),
                   ),
