@@ -61,6 +61,8 @@ flutter:
   - lib/asset/iphone-xr-black.png
   - lib/asset/back_button.png
   - lib/asset/login.png
+  - lib/asset/logo.png
+  - lib/asset/logo_transparent.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -77,10 +77,10 @@ class _LoginPageState extends State<LoginPage>
                     Padding(
                       padding: EdgeInsets.only(top: 75.0),
                       child: new Image(
-                          width: 250.0,
-                          height: 191.0,
+                          width: 220.0, 
+                          height: 200.0,
                           fit: BoxFit.fill,
-                          image: new AssetImage('lib/asset/login.png')),
+                          image: new AssetImage('lib/asset/logo_transparent.png')),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 20.0),
@@ -152,11 +152,11 @@ class _LoginPageState extends State<LoginPage>
         value,
         textAlign: TextAlign.center,
         style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontSize: 16.0,
             fontFamily: "WorkSansSemiBold"),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       duration: Duration(seconds: 3),
     ));
   }
@@ -461,7 +461,7 @@ class _LoginPageState extends State<LoginPage>
                 elevation: 2.0,
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Container(
                   width: 300.0,
@@ -579,7 +579,7 @@ class _LoginPageState extends State<LoginPage>
                               FontAwesomeIcons.lock,
                               color: Colors.black,
                             ),
-                            hintText: "Confirmation",
+                            hintText: "Confirm Password",
                             hintStyle: TextStyle(
                                 fontFamily: "WorkSansSemiBold", fontSize: 16.0),
                             suffixIcon: GestureDetector(
@@ -626,8 +626,9 @@ class _LoginPageState extends State<LoginPage>
                       tileMode: TileMode.clamp),
                 ),
                 child: MaterialButton(
-                    highlightColor: Colors.transparent,
-                    splashColor: Theme.Colors.loginGradientEnd,
+                    // highlightColor: Colors.grey,
+                    // splashColor: Colors.grey,
+                    color: Colors.grey,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -641,7 +642,7 @@ class _LoginPageState extends State<LoginPage>
                       ),
                     ),
                     onPressed: () =>
-                        showInSnackBar("SignUp button pressed")),
+                          showInSnackBar("Email confirmation sent!")),
               ),
             ],
           ),

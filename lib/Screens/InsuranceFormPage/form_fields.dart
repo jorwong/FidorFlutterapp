@@ -23,8 +23,8 @@ class FormFieldsExampleForm extends StatelessWidget {
           final formBloc = BlocProvider.of<FormFieldsExampleFormBloc>(context);
 
           return Scaffold(
-            appBar: AppBar(title: Text('Form Fields Example')),
-            backgroundColor: Color(0xFFf7418c),
+            appBar: AppBar(title: Text('Form Fields Example'), backgroundColor: Colors.lightBlue,),
+            backgroundColor: Colors.grey,
             body: FormBlocListener<FormFieldsExampleFormBloc, String, String>(
               onSubmitting: (context, state) => LoadingDialog.show(context),
               onSuccess: (context, state) {
@@ -43,7 +43,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                   TextFieldBlocBuilder(
                     textFieldBloc: formBloc.textField,
                     decoration: InputDecoration(
-                      labelText: 'Phone Model',
+                      labelText: 'IPhone-XR 256GB',
                       prefixText: 'IPhone-XR 256GB',
                       prefixIcon: Icon(Icons.sentiment_very_satisfied),
                     ),

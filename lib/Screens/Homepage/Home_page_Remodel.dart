@@ -280,9 +280,9 @@ class _HomePageScreenState extends State<HomePageScreen>
                           Text(
                             'Available Balance: ',
                             style: TextStyle(
-                                fontWeight: FontWeight.w100,
+                                fontWeight: FontWeight.bold,
                                 fontSize: 16,
-                                color: Colors.grey.withOpacity(0.8)),
+                                color: Colors.grey.withOpacity(0.8)),  
                           ),
                           const SizedBox(
                             height: 8,
@@ -353,7 +353,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                           Text(
                             'Bank',
                             style: TextStyle(
-                                fontWeight: FontWeight.w100,
+                                fontWeight: FontWeight.bold,
                                 fontSize: 16,
                                 color: Colors.grey.withOpacity(0.8)),
                           ),
@@ -486,7 +486,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '530 Products found',
+                      '100 Products found',
                       style: TextStyle(
                         fontWeight: FontWeight.w100,
                         fontSize: 16,
@@ -577,7 +577,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back),
+                    child: Icon(FontAwesomeIcons.powerOff),
                   ),
                 ),
               ),
@@ -622,7 +622,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                       onTap: () {},
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(FontAwesomeIcons.mapMarkerAlt),
+                        child: Icon(FontAwesomeIcons.box),
                       ),
                     ),
                   ),
@@ -659,6 +659,3 @@ class ContestTabHeader extends SliverPersistentHeaderDelegate {
     return false;
   }
 }
-
-
-

@@ -90,7 +90,7 @@ Future navigateToSubPage(context)async {
                                               CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Text(
-                                              homeData.titleTxt,
+                                              homeData.titleTxt, //Title
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w600,
@@ -113,16 +113,16 @@ Future navigateToSubPage(context)async {
                                                 const SizedBox(
                                                   width: 4,
                                                 ),
-                                                Icon(
-                                                  FontAwesomeIcons.mapMarkerAlt,
-                                                  size: 12,
-                                                  color: HomePageTheme
-                                                          .buildLightTheme()
-                                                      .primaryColor,
-                                                ),
+                                                // Icon(
+                                                //   FontAwesomeIcons.mapMarkerAlt,
+                                                //   size: 12,
+                                                //   color: HomePageTheme
+                                                //           .buildLightTheme()
+                                                //       .primaryColor,
+                                                // ),
                                                 Expanded(
-                                                  child: Text(
-                                                    '${homeData.dist.toStringAsFixed(1)} km to city',
+                                                  child: Text('',
+                                                    //'${homeData.dist.toStringAsFixed(1)} km to city',
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
@@ -174,16 +174,16 @@ Future navigateToSubPage(context)async {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
                                       children: <Widget>[
-                                        Text(
-                                          '\$${homeData.perNight}',
+                                        Text('',
+                                          // '\$${homeData.perNight}',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: 22,
                                           ),
                                         ),
-                                        Text(
-                                          '/per night',
+                                        Text('',
+                                          // '/per night',
                                           style: TextStyle(
                                               fontSize: 14,
                                               color:
