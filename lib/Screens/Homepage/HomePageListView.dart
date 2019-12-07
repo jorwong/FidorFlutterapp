@@ -1,4 +1,3 @@
-  
 import "package:fidortry/Screens/Homepage/HomePageTheme.dart";
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,8 +6,9 @@ import 'package:fidortry/Screens/InsuranceFormPage/form_fields.dart';
 import 'package:fidortry/Provider/homeListData.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-Future navigateToSubPage(context)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> FormFieldsExampleForm()));
+Future navigateToSubPage(context) async {
+  Navigator.push(context,
+      MaterialPageRoute(builder: (context) => FormFieldsExampleForm()));
 }
 
 class HomeListView extends StatelessWidget {
@@ -25,9 +25,11 @@ class HomeListView extends StatelessWidget {
   final AnimationController animationController;
   final Animation<dynamic> animation;
 
-Future navigateToSubPage(context)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> FormFieldsExampleForm()));
-}
+  Future navigateToSubPage(context) async {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => FormFieldsExampleForm()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -121,7 +123,8 @@ Future navigateToSubPage(context)async {
                                                 //       .primaryColor,
                                                 // ),
                                                 Expanded(
-                                                  child: Text('',
+                                                  child: Text(
+                                                    '',
                                                     //'${homeData.dist.toStringAsFixed(1)} km to city',
                                                     overflow:
                                                         TextOverflow.ellipsis,
@@ -174,7 +177,8 @@ Future navigateToSubPage(context)async {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
                                       children: <Widget>[
-                                        Text('',
+                                        Text(
+                                          '',
                                           // '\$${homeData.perNight}',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
@@ -182,7 +186,8 @@ Future navigateToSubPage(context)async {
                                             fontSize: 22,
                                           ),
                                         ),
-                                        Text('',
+                                        Text(
+                                          '',
                                           // '/per night',
                                           style: TextStyle(
                                               fontSize: 14,
@@ -208,7 +213,6 @@ Future navigateToSubPage(context)async {
                               ),
                               onTap: () {
                                 _onAlertWithCustomContentPressed(context);
-
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -235,35 +239,36 @@ Future navigateToSubPage(context)async {
 }
 
 _onAlertWithCustomContentPressed(context) {
-    Alert(
-        context: context,
-        title: "Is this Your Phone?",
-        content: Column(
-          children: <Widget>[
-            Text("Model: IPhone-XR 256GB"),
-            Text("Id: 7392084-13840"),
-            // TextField(
-            //   decoration: InputDecoration(
-            //     icon: Icon(Icons.account_circle),
-            //     labelText: 'Username',
-            //   ),
-            // ),
-            // TextField(
-            //   obscureText: true,
-            //   decoration: InputDecoration(
-            //     icon: Icon(Icons.lock),
-            //     labelText: 'Confirm',
-            //   ),
-            // ),
-          ],
-        ),
-        buttons: [
-          DialogButton(
-            onPressed: () => navigateToSubPage(context),
-            child: Text(
-              "Confirm",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          )
-        ]).show();
-  }
+  Alert(
+      context: context,
+      title: "Is this Your Phone?",
+      content: Column(
+        children: <Widget>[
+          Text("Model: IPhone-XR 256GB"),
+          Text("Id: 7392084-13840"),
+          // TextField(
+          //   decoration: InputDecoration(
+          //     icon: Icon(Icons.account_circle),
+          //     labelText: 'Username',
+          //   ),
+          // ),
+          // TextField(
+          //   obscureText: true,
+          //   decoration: InputDecoration(
+          //     icon: Icon(Icons.lock),
+          //     labelText: 'Confirm',
+          //   ),
+          // ),
+        ],
+      ),
+      buttons: [
+        DialogButton(
+          color: Colors.green,
+          onPressed: () => navigateToSubPage(context),
+          child: Text(
+            "Confirm",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        )
+      ]).show();
+}

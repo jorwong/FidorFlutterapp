@@ -8,12 +8,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
 import 'dart:io';
 
-Future navigateToSubPage(context,int amount)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> CheckoutPage(amount: amount)));
+Future navigateToSubPage(context, int amount) async {
+  Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CheckoutPage(amount: amount)));
 }
 
 class FormFieldsExampleForm extends StatelessWidget {
-  static String tag ='Insuranceformpage';
+  static String tag = 'Insuranceformpage';
   @override
   Widget build(BuildContext context) {
     return BlocProvider<FormFieldsExampleFormBloc>(
@@ -21,93 +22,115 @@ class FormFieldsExampleForm extends StatelessWidget {
       child: Builder(
         builder: (context) {
           final formBloc = BlocProvider.of<FormFieldsExampleFormBloc>(context);
-
           return Scaffold(
-            appBar: AppBar(title: Text('Form Fields Example'), backgroundColor: Colors.lightBlue,),
-            backgroundColor: Colors.grey,
-            body: FormBlocListener<FormFieldsExampleFormBloc, String, String>(
-              onSubmitting: (context, state) => LoadingDialog.show(context),
-              onSuccess: (context, state) {
-                LoadingDialog.hide(context);
-                Notifications.showSnackBarWithSuccess(
-                    context, state.successResponse);
-              },
-              onFailure: (context, state) {
-                LoadingDialog.hide(context);
-                Notifications.showSnackBarWithError(
-                    context, state.failureResponse);
-              },
-              child: ListView(
-                physics: ClampingScrollPhysics(),
-                children: <Widget>[
-                  TextFieldBlocBuilder(
-                    textFieldBloc: formBloc.textField,
-                    decoration: InputDecoration(
-                      labelText: 'IPhone-XR 256GB',
-                      prefixText: 'IPhone-XR 256GB',
-                      prefixIcon: Icon(Icons.sentiment_very_satisfied),
+            appBar: AppBar(
+              title: Text('Form Fields Example'),
+              backgroundColor: Colors.grey,
+            ),
+            backgroundColor: Colors.green,
+            body: Card(
+              margin: EdgeInsets.all(20),
+              elevation: 5,
+              child:
+                  FormBlocListener<FormFieldsExampleFormBloc, String, String>(
+                onSubmitting: (context, state) => LoadingDialog.show(context),
+                onSuccess: (context, state) {
+                  LoadingDialog.hide(context);
+                  Notifications.showSnackBarWithSuccess(
+                      context, state.successResponse);
+                },
+                onFailure: (context, state) {
+                  LoadingDialog.hide(context);
+                  Notifications.showSnackBarWithError(
+                      context, state.failureResponse);
+                },
+                child: ListView(
+                  physics: ClampingScrollPhysics(),
+                  children: <Widget>[
+                    TextFieldBlocBuilder(
+                      textFieldBloc: formBloc.textField,
+                      decoration: InputDecoration(
+                        labelText: 'IPhone-XR 256GB',
+                        prefixText: 'IPhone-XR 256GB',
+                        prefixIcon: Icon(Icons.phone_iphone),
+                      ),
+                      errorBuilder: (context, error) {
+                        switch (error) {
+                          case FieldBlocValidatorsErrors.requiredTextFieldBloc:
+                            return 'You must write amazing text.';
+                            break;
+                          default:
+                            return 'This text is nor valid.';
+                        }
+                      },
                     ),
-                    errorBuilder: (context, error) {
-                      switch (error) {
-                        case FieldBlocValidatorsErrors.requiredTextFieldBloc:
-                          return 'You must write amazing text.';
-                          break;
-                        default:
-                          return 'This text is nor valid.';
-                      }
-                    },
-                  ),
-                  TextFieldBlocBuilder(
-                    textFieldBloc: formBloc.textFieldamt,
-                    decoration: InputDecoration(
-                      labelText: 'Amount Paid',
-                      prefixIcon: Icon(Icons.sentiment_very_satisfied),
+                    ImageFieldBlocBuilder(
+                      fileFieldBloc: formBloc.imageField,
+                      formBloc: formBloc,
                     ),
-                    errorBuilder: (context, error) {
-                      switch (error) {
-                        case FieldBlocValidatorsErrors.requiredTextFieldBloc:
-                          return 'You must write amazing text.';
-                          break;
-                        default:
-                          return 'This text is nor valid.';
-                      }
-                    },
-                  ),
-                  ImageFieldBlocBuilder(
-                    fileFieldBloc: formBloc.imageField,
-                    formBloc: formBloc,
-                  ),
-                  DropdownFieldBlocBuilder<String>(
-                    selectFieldBloc: formBloc.selectField1,
-                    decoration: InputDecoration(
-                      labelText: 'DropdownFieldBlocBuilder',
-                      prefixIcon: Icon(Icons.sentiment_very_dissatisfied),
+                    TextFieldBlocBuilder(
+                      textFieldBloc: formBloc.textFieldamt,
+                      decoration: InputDecoration(
+                        labelText: 'Amount Paid',
+                        prefixIcon: Icon(Icons.sentiment_very_satisfied),
+                      ),
+                      errorBuilder: (context, error) {
+                        switch (error) {
+                          case FieldBlocValidatorsErrors.requiredTextFieldBloc:
+                            return 'You must write amazing text.';
+                            break;
+                          default:
+                            return 'This text is nor valid.';
+                        }
+                      },
                     ),
-                    itemBuilder: (context, value) => value,
-                  ),
-                  CheckboxFieldBlocBuilder(
-                    booleanFieldBloc: formBloc.booleanField,
-                    body: Text('CheckboxFieldBlocBuilder'),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
-                      onPressed: (){
-                        formBloc.submit;
-                        formBloc.Navigate(context);
-                        },
-                      child: Center(child: Text('SUBMIT')),
+                    DropdownFieldBlocBuilder<String>(
+                      selectFieldBloc: formBloc.selectField1,
+                      decoration: InputDecoration(
+                        labelText: 'DropdownFieldBlocBuilder',
+                        prefixIcon: Icon(Icons.sentiment_very_dissatisfied),
+                      ),
+                      itemBuilder: (context, value) => value,
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: RaisedButton(
-                      onPressed: formBloc.clear,
-                      child: Center(child: Text('CLEAR')),
+                    CheckboxFieldBlocBuilder(
+                      booleanFieldBloc: formBloc.booleanField,
+                      body: Text('CheckboxFieldBlocBuilder'),
                     ),
-                  ),
-                ],
+                    Container(
+                      color: Colors.grey,
+                      height: 1.5,
+                      width: 50,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: RaisedButton(
+                            elevation: 10,
+                            textColor: Colors.white,
+                            color: Colors.green,
+                            onPressed: () {
+                              formBloc.submit;
+                              formBloc.Navigate(context);
+                            },
+                            child: Center(child: Text('SUBMIT')),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: RaisedButton(
+                            elevation: 10,
+                            textColor: Colors.white,
+                            color: Colors.red,
+                            onPressed: formBloc.clear,
+                            child: Center(child: Text('CLEAR')),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -133,7 +156,7 @@ class ImageFieldBlocBuilder extends StatelessWidget {
     return BlocBuilder<FormBloc, FormBlocState>(
       bloc: formBloc,
       builder: (context, formState) {
-       return BlocBuilder<InputFieldBloc<File>, InputFieldBlocState<File>>(
+        return BlocBuilder<InputFieldBloc<File>, InputFieldBlocState<File>>(
           bloc: fileFieldBloc,
           builder: (context, fieldState) {
             return Column(

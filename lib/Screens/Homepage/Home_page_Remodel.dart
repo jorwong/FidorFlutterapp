@@ -11,23 +11,22 @@ import "HomePageTheme.dart";
 import 'package:fidortry/Provider/class.dart';
 import 'package:fidortry/Screens/InsuranceFormPage/form_fields.dart';
 
-String recordState="";
+String recordState = "";
 
 class HomePageScreen extends StatefulWidget {
-
   static String tag = 'Homepage';
   String record;
   @override
   _HomePageScreenState createState() => _HomePageScreenState();
 }
 
-Future navigateToSubPage(context)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> FormFieldsExampleForm()));
+Future navigateToSubPage(context) async {
+  Navigator.push(context,
+      MaterialPageRoute(builder: (context) => FormFieldsExampleForm()));
 }
 
 class _HomePageScreenState extends State<HomePageScreen>
     with TickerProviderStateMixin {
-
   AnimationController animationController;
   List<HomeListData> homeList = HomeListData.hotelList;
   final ScrollController _scrollController = ScrollController();
@@ -47,9 +46,8 @@ class _HomePageScreenState extends State<HomePageScreen>
     return true;
   }
 
-  Future<Customer> getCust() async{
+  Future<Customer> getCust() async {
     return await getCustomers();
-
   }
 
   @override
@@ -58,19 +56,19 @@ class _HomePageScreenState extends State<HomePageScreen>
     super.dispose();
   }
 
-  void showFlushbar(BuildContext context){
-  Flushbar(
-  message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-  icon: Icon(
-    Icons.info_outline,
-    size: 28.0,
-    color: Colors.blue[300],
-    ),
-  duration: Duration(seconds: 3),
-  leftBarIndicatorColor: Colors.blue[300],
-)..show(context);
+  void showFlushbar(BuildContext context) {
+    Flushbar(
+      message:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+      icon: Icon(
+        Icons.info_outline,
+        size: 28.0,
+        color: Colors.blue[300],
+      ),
+      duration: Duration(seconds: 3),
+      leftBarIndicatorColor: Colors.blue[300],
+    )..show(context);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +89,6 @@ class _HomePageScreenState extends State<HomePageScreen>
                 child: Column(
                   children: <Widget>[
                     getAppBarUI(),
-                    
                     Expanded(
                       child: NestedScrollView(
                         controller: _scrollController,
@@ -105,7 +102,6 @@ class _HomePageScreenState extends State<HomePageScreen>
                                   children: <Widget>[
                                     getSearchBarUI(),
                                     getTimeDateUI(),
-                                    
                                   ],
                                 );
                               }, childCount: 1),
@@ -138,9 +134,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                                               curve: Curves.fastOutSlowIn)));
                               animationController.forward();
                               return HomeListView(
-                                callback: () {
-
-                                },
+                                callback: () {},
                                 homeData: homeList[index],
                                 animation: animation,
                                 animationController: animationController,
@@ -196,9 +190,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                       animationController.forward();
 
                       return HomeListView(
-                        callback: () {
-                        
-                        },
+                        callback: () {},
                         homeData: homeList[index],
                         animation: animation,
                         animationController: animationController,
@@ -214,7 +206,8 @@ class _HomePageScreenState extends State<HomePageScreen>
     );
   }
 
-  Widget getHomeViewList() { //this will get the data then build the column for the list view
+  Widget getHomeViewList() {
+    //this will get the data then build the column for the list view
     final List<Widget> homeListViews = <Widget>[];
     for (int i = 0; i < homeList.length; i++) {
       final int count = homeList.length;
@@ -282,7 +275,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
-                                color: Colors.grey.withOpacity(0.8)),  
+                                color: Colors.grey.withOpacity(0.8)),
                           ),
                           const SizedBox(
                             height: 8,
@@ -292,22 +285,21 @@ class _HomePageScreenState extends State<HomePageScreen>
                             initialData: "Loading Data...",
                             builder: (context, cust) {
                               if (cust.hasData) {
-                                return Text( 
-                                "\$"+cust.data.balance.toString(),
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w100,
-                                  fontSize: 16,
-                                ), 
-                              );
-                              }
-                              else{
-                                return Text( 
-                                "Loading Data...",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w100,
-                                  fontSize: 16,
-                                ), 
-                              );
+                                return Text(
+                                  "\$" + cust.data.balance.toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w100,
+                                    fontSize: 16,
+                                  ),
+                                );
+                              } else {
+                                return Text(
+                                  "Loading Data...",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w100,
+                                    fontSize: 16,
+                                  ),
+                                );
                               }
                             },
                           )
@@ -455,7 +447,8 @@ class _HomePageScreenState extends State<HomePageScreen>
     );
   }
 
-  Widget getFilterBarUI() { //Might get rid of this
+  Widget getFilterBarUI() {
+    //Might get rid of this
     return Stack(
       children: <Widget>[
         Positioned(
