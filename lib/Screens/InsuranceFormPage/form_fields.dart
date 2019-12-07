@@ -24,10 +24,10 @@ class FormFieldsExampleForm extends StatelessWidget {
           final formBloc = BlocProvider.of<FormFieldsExampleFormBloc>(context);
           return Scaffold(
             appBar: AppBar(
-              title: Text('Form Fields Example'),
-              backgroundColor: Colors.grey,
+              title: Text('Phone Insurance'),
+              backgroundColor: Colors.white,
             ),
-            backgroundColor: Colors.green,
+            backgroundColor: Colors.grey,
             body: Card(
               margin: EdgeInsets.all(20),
               elevation: 5,
@@ -72,7 +72,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                       textFieldBloc: formBloc.textFieldamt,
                       decoration: InputDecoration(
                         labelText: 'Amount Paid',
-                        prefixIcon: Icon(Icons.sentiment_very_satisfied),
+                        prefixIcon: Icon(Icons.attach_money),
                       ),
                       errorBuilder: (context, error) {
                         switch (error) {
@@ -94,40 +94,46 @@ class FormFieldsExampleForm extends StatelessWidget {
                     ),
                     CheckboxFieldBlocBuilder(
                       booleanFieldBloc: formBloc.booleanField,
-                      body: Text('CheckboxFieldBlocBuilder'),
+                      body: Text('I assure you, the information is correct.'),
                     ),
                     Container(
-                      color: Colors.grey,
-                      height: 1.5,
-                      width: 50,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: RaisedButton(
-                            elevation: 10,
-                            textColor: Colors.white,
-                            color: Colors.green,
-                            onPressed: () {
-                              formBloc.submit;
-                              formBloc.Navigate(context);
-                            },
-                            child: Center(child: Text('SUBMIT')),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ButtonTheme(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(10)),
+                            height: 35,
+                            minWidth: 125,
+                            padding: EdgeInsets.all(10),
+                            child: RaisedButton(
+                              elevation: 5,
+                              textColor: Colors.white,
+                              color: Colors.green,
+                              onPressed: () {
+                                formBloc.submit;
+                                formBloc.Navigate(context);
+                              },
+                              child: Center(child: Text('SUBMIT')),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: RaisedButton(
-                            elevation: 10,
-                            textColor: Colors.white,
-                            color: Colors.red,
-                            onPressed: formBloc.clear,
-                            child: Center(child: Text('CLEAR')),
+                          SizedBox(width: 10),
+                          ButtonTheme(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(10)),
+                            height: 35,
+                            minWidth: 125,
+                            padding: EdgeInsets.all(10),
+                            child: RaisedButton(
+                              elevation: 5,
+                              textColor: Colors.white,
+                              color: Colors.red,
+                              onPressed: formBloc.clear,
+                              child: Center(child: Text('CLEAR')),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

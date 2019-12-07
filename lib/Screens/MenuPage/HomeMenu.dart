@@ -49,9 +49,9 @@ class _HomePageState extends State<HomePage>
       appBar: CustomAppBar(),
       body: Container(
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(top: 50.0),
+        padding: EdgeInsets.only(top: 20.0),
         child: Column(
-          children: <Widget>[tabBar, tabBarView],
+          children: <Widget>[tabBarView],
         ),
       ),
     );
