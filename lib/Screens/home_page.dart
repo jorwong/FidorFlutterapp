@@ -5,7 +5,7 @@ import 'Insurance_forms_page.dart';
 import 'package:fidortry/Provider/class.dart';
 import 'package:http/http.dart' as http;
 
-class HomePages extends StatelessWidget {
+class HomePage extends StatelessWidget {
   String token = "";
   SharedPreferences prefs;
   Future<String> getTokens() async {

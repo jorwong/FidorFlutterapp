@@ -24,11 +24,17 @@ class FormFieldsExampleForm extends StatelessWidget {
           final formBloc = BlocProvider.of<FormFieldsExampleFormBloc>(context);
           return Scaffold(
             appBar: AppBar(
-              title: Text('Form Fields Example'),
-              backgroundColor: Colors.grey,
+              iconTheme: IconThemeData(color: Colors.black),
+              title: Text(
+                'Phone Insurance',
+                style: TextStyle(color: Colors.black),
+              ),
+              backgroundColor: Colors.white,
             ),
-            backgroundColor: Colors.green,
+            backgroundColor: const Color(0xFFF6F6F6),
             body: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(20)),
               margin: EdgeInsets.all(20),
               elevation: 5,
               child:
@@ -47,6 +53,14 @@ class FormFieldsExampleForm extends StatelessWidget {
                 child: ListView(
                   physics: ClampingScrollPhysics(),
                   children: <Widget>[
+                    TextFieldBlocBuilder(
+                      textFieldBloc: formBloc.textField,
+                      decoration: InputDecoration(
+                        labelText: 'Title of Insurance:',
+                        hintText: 'My Phone Insurance!',
+                        prefixIcon: Icon(Icons.phone_iphone),
+                      ),
+                    ),
                     TextFieldBlocBuilder(
                       textFieldBloc: formBloc.textField,
                       decoration: InputDecoration(
@@ -72,8 +86,8 @@ class FormFieldsExampleForm extends StatelessWidget {
                       textFieldBloc: formBloc.textFieldamt,
                       decoration: InputDecoration(
                         labelText: 'Amount Paid',
-                        prefixIcon: Icon(Icons.sentiment_very_satisfied),
-                        prefixText: "\$1800"
+                        prefixText: "\$1800",
+                        prefixIcon: Icon(Icons.attach_money),
                       ),
                       errorBuilder: (context, error) {
                         switch (error) {
@@ -85,50 +99,74 @@ class FormFieldsExampleForm extends StatelessWidget {
                         }
                       },
                     ),
-                    DropdownFieldBlocBuilder<String>(
-                      selectFieldBloc: formBloc.selectField1,
+                    TextFieldBlocBuilder(
+                      textFieldBloc: formBloc.textFieldamt,
                       decoration: InputDecoration(
-                        labelText: 'DropdownFieldBlocBuilder',
-                        prefixIcon: Icon(Icons.sentiment_very_dissatisfied),
+                        labelText: 'Age of Phone',
+                        prefixText: '42 days ago',
+                        prefixIcon: Icon(Icons.cake),
                       ),
-                      itemBuilder: (context, value) => value,
+                      errorBuilder: (context, error) {
+                        switch (error) {
+                          case FieldBlocValidatorsErrors.requiredTextFieldBloc:
+                            return 'You must write amazing text.';
+                            break;
+                          default:
+                            return 'This text is nor valid.';
+                        }
+                      },
                     ),
+                    // DropdownFieldBlocBuilder<String>(
+                    //   selectFieldBloc: formBloc.selectField1,
+                    //   decoration: InputDecoration(
+                    //     labelText: 'DropdownFieldBlocBuilder',
+                    //     prefixIcon: Icon(Icons.sentiment_very_dissatisfied),
+                    //   ),
+                    //   itemBuilder: (context, value) => value,
+                    // ),
                     CheckboxFieldBlocBuilder(
                       booleanFieldBloc: formBloc.booleanField,
-                      body: Text('CheckboxFieldBlocBuilder'),
+                      body: Text('I assure you, the information is correct.'),
                     ),
                     Container(
-                      color: Colors.grey,
-                      height: 1.5,
-                      width: 50,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: RaisedButton(
-                            elevation: 10,
-                            textColor: Colors.white,
-                            color: Colors.green,
-                            onPressed: () {
-                              formBloc.submit;
-                              formBloc.Navigate(context);
-                            },
-                            child: Center(child: Text('SUBMIT')),
+                      margin: EdgeInsets.all(5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ButtonTheme(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(10)),
+                            height: 35,
+                            minWidth: 125,
+                            padding: EdgeInsets.all(10),
+                            child: RaisedButton(
+                              elevation: 5,
+                              textColor: Colors.white,
+                              color: Colors.green,
+                              onPressed: () {
+                                formBloc.submit;
+                                formBloc.Navigate(context);
+                              },
+                              child: Center(child: Text('SUBMIT')),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: RaisedButton(
-                            elevation: 10,
-                            textColor: Colors.white,
-                            color: Colors.red,
-                            onPressed: formBloc.clear,
-                            child: Center(child: Text('CLEAR')),
+                          SizedBox(width: 10),
+                          ButtonTheme(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(10)),
+                            height: 35,
+                            minWidth: 125,
+                            padding: EdgeInsets.all(10),
+                            child: RaisedButton(
+                              elevation: 5,
+                              textColor: Colors.white,
+                              color: Colors.red,
+                              onPressed: formBloc.clear,
+                              child: Center(child: Text('CLEAR')),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

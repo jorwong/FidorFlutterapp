@@ -18,11 +18,14 @@ class Themes {
     cardColor: Colors.white,
     canvasColor: Colors.white,
     scaffoldBackgroundColor: Colors.indigo,
+<<<<<<< HEAD
     iconTheme: IconThemeData(color: Colors.white),
     appBarTheme: AppBarTheme(
       color: Colors.black,
       elevation: 0,
     ),
+=======
+>>>>>>> 77a4dd199acf9594bd9ece7bde21e0ce8f3155f7
     textTheme: TextTheme(
       button: TextStyle(
         color: Colors.grey[800],
@@ -31,7 +34,7 @@ class Themes {
       body1: TextStyle(color: Colors.white70),
     ),
     buttonTheme: ButtonThemeData(
-      buttonColor: Colors.white,
+      buttonColor: Colors.black,
       textTheme: ButtonTextTheme.primary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
