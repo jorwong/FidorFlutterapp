@@ -24,11 +24,17 @@ class FormFieldsExampleForm extends StatelessWidget {
           final formBloc = BlocProvider.of<FormFieldsExampleFormBloc>(context);
           return Scaffold(
             appBar: AppBar(
-              title: Text('Phone Insurance'),
+              iconTheme: IconThemeData(color: Colors.black),
+              title: Text(
+                'Phone Insurance',
+                style: TextStyle(color: Colors.black),
+              ),
               backgroundColor: Colors.white,
             ),
-            backgroundColor: Colors.grey,
+            backgroundColor: const Color(0xFFF6F6F6),
             body: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(20)),
               margin: EdgeInsets.all(20),
               elevation: 5,
               child:
@@ -47,6 +53,14 @@ class FormFieldsExampleForm extends StatelessWidget {
                 child: ListView(
                   physics: ClampingScrollPhysics(),
                   children: <Widget>[
+                    TextFieldBlocBuilder(
+                      textFieldBloc: formBloc.textField,
+                      decoration: InputDecoration(
+                        labelText: 'Title of Insurance:',
+                        hintText: 'My Phone Insurance!',
+                        prefixIcon: Icon(Icons.phone_iphone),
+                      ),
+                    ),
                     TextFieldBlocBuilder(
                       textFieldBloc: formBloc.textField,
                       decoration: InputDecoration(
@@ -72,6 +86,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                       textFieldBloc: formBloc.textFieldamt,
                       decoration: InputDecoration(
                         labelText: 'Amount Paid',
+                        prefixText: "\$1800",
                         prefixIcon: Icon(Icons.attach_money),
                       ),
                       errorBuilder: (context, error) {
@@ -84,19 +99,37 @@ class FormFieldsExampleForm extends StatelessWidget {
                         }
                       },
                     ),
-                    DropdownFieldBlocBuilder<String>(
-                      selectFieldBloc: formBloc.selectField1,
+                    TextFieldBlocBuilder(
+                      textFieldBloc: formBloc.textFieldamt,
                       decoration: InputDecoration(
-                        labelText: 'DropdownFieldBlocBuilder',
-                        prefixIcon: Icon(Icons.sentiment_very_dissatisfied),
+                        labelText: 'Age of Phone',
+                        prefixText: '42 days ago',
+                        prefixIcon: Icon(Icons.cake),
                       ),
-                      itemBuilder: (context, value) => value,
+                      errorBuilder: (context, error) {
+                        switch (error) {
+                          case FieldBlocValidatorsErrors.requiredTextFieldBloc:
+                            return 'You must write amazing text.';
+                            break;
+                          default:
+                            return 'This text is nor valid.';
+                        }
+                      },
                     ),
+                    // DropdownFieldBlocBuilder<String>(
+                    //   selectFieldBloc: formBloc.selectField1,
+                    //   decoration: InputDecoration(
+                    //     labelText: 'DropdownFieldBlocBuilder',
+                    //     prefixIcon: Icon(Icons.sentiment_very_dissatisfied),
+                    //   ),
+                    //   itemBuilder: (context, value) => value,
+                    // ),
                     CheckboxFieldBlocBuilder(
                       booleanFieldBloc: formBloc.booleanField,
                       body: Text('I assure you, the information is correct.'),
                     ),
                     Container(
+                      margin: EdgeInsets.all(5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[

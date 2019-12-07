@@ -18,11 +18,6 @@ class Themes {
     cardColor: Colors.white,
     canvasColor: Colors.white,
     scaffoldBackgroundColor: Colors.indigo,
-    iconTheme: IconThemeData(color: Colors.white),
-    appBarTheme: AppBarTheme(
-      color: Colors.transparent,
-      elevation: 0,
-    ),
     textTheme: TextTheme(
       button: TextStyle(
         color: Colors.grey[800],
@@ -31,7 +26,7 @@ class Themes {
       body1: TextStyle(color: Colors.white70),
     ),
     buttonTheme: ButtonThemeData(
-      buttonColor: Colors.white,
+      buttonColor: Colors.black,
       textTheme: ButtonTextTheme.primary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
