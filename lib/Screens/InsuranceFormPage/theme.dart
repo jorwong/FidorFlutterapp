@@ -20,7 +20,7 @@ class Themes {
     scaffoldBackgroundColor: Colors.indigo,
     iconTheme: IconThemeData(color: Colors.white),
     appBarTheme: AppBarTheme(
-      color: Colors.transparent,
+      color: Colors.black,
       elevation: 0,
     ),
     textTheme: TextTheme(
