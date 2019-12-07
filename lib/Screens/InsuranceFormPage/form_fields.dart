@@ -73,6 +73,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                       decoration: InputDecoration(
                         labelText: 'Amount Paid',
                         prefixIcon: Icon(Icons.sentiment_very_satisfied),
+                        prefixText: "\$1800"
                       ),
                       errorBuilder: (context, error) {
                         switch (error) {
@@ -165,7 +166,7 @@ class ImageFieldBlocBuilder extends StatelessWidget {
                   children: <Widget>[
                     Card(
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(60),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       margin: EdgeInsets.zero,
                       clipBehavior: Clip.antiAlias,
@@ -178,7 +179,7 @@ class ImageFieldBlocBuilder extends StatelessWidget {
                         child: fieldState.value != null
                             ? Image.file(
                                 fieldState.value,
-                                height: 120,
+                                height: 180,
                                 width: 120,
                                 fit: BoxFit.fill,
                               )

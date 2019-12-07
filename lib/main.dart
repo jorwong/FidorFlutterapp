@@ -13,7 +13,7 @@ import 'package:fidortry/Screens/loginPage/LoginPage.dart';
 import "package:fidortry/Screens/InsuranceFormPage/form_fields.dart";
 import 'package:fidortry/Screens/InsuranceFormPage/theme.dart';
 import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
-import 'package:fidortry/Screens/MenuPage/HomeMenu.dart';
+import 'package:fidortry/Screens/MenuPage/Menu_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'hihi',
       debugShowCheckedModeBanner: false,
-      home: new HomePage(),
+      home: new Menu(),
       routes: routes,
     );
   }
