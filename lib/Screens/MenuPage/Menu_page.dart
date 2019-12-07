@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class Menu extends StatefulWidget {
+  static String tag = 'Menupage';
   Menu({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -9,22 +11,26 @@ class Menu extends StatefulWidget {
   _MenuState createState() => _MenuState();
 }
 
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
+}
+
 class _MenuState extends State<Menu> {
   var categories = [
     {
-      'title': 'Women',
+      'title': 'Insurance',
       'img': 'lib/asset/Insurance.jpg',
     },
     {
-      'title': 'Men',
+      'title': 'Loan',
       'img': 'img/men.jpg',
     },
     {
-      'title': 'Kids',
+      'title': 'Savings',
       'img': 'img/children.jpg',
     },
     {
-      'title': 'House',
+      'title': 'Bills',
       'img': 'img/house.jpg',
     },
     {
@@ -43,7 +49,7 @@ class _MenuState extends State<Menu> {
       appBar: AppBar(
         title: Text("Categories"),
       ),
-      drawer: buildDrawer(),
+      // drawer: buildDrawer(),
       body: buildBody(),
     );
   }
@@ -73,7 +79,7 @@ class _MenuState extends State<Menu> {
               ),
             ),
             onTap: () => {
-                  
+                  navigateToSubPage(context)
                 },
           );
         });

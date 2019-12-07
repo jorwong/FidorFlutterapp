@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "package:fidortry/Screens/loginPage/LoginPageTheme.dart" as Theme;
 import 'package:fidortry/Screens/loginPage/bubble_indication_painter.dart';
 import 'package:fidortry/Screens/Homepage/Home_page_remodel.dart';
+import 'package:fidortry/Screens/MenuPage/Menu_page.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -13,7 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 Future navigateToSubPage(context)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> Menu()));
 }
 
 class _LoginPageState extends State<LoginPage>

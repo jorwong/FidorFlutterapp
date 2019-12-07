@@ -83,10 +83,12 @@ class FormFieldsExampleForm extends StatelessWidget {
                       formBloc: formBloc,
                     ),
                     TextFieldBlocBuilder(
+                      
                       textFieldBloc: formBloc.textFieldamt,
                       decoration: InputDecoration(
                         labelText: 'Amount Paid',
                         prefixText: "\$1800",
+                        
                         prefixIcon: Icon(Icons.attach_money),
                       ),
                       errorBuilder: (context, error) {
@@ -136,7 +138,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                           ButtonTheme(
                             shape: RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(10)),
-                            height: 35,
+                            height: 45,
                             minWidth: 125,
                             padding: EdgeInsets.all(10),
                             child: RaisedButton(
@@ -150,17 +152,18 @@ class FormFieldsExampleForm extends StatelessWidget {
                               child: Center(child: Text('SUBMIT')),
                             ),
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 20),
                           ButtonTheme(
                             shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(10)),
-                            height: 35,
+                                borderRadius: new BorderRadius.circular(10),
+                                side: BorderSide(color: Colors.red)),
+                            height: 40,
                             minWidth: 125,
                             padding: EdgeInsets.all(10),
                             child: RaisedButton(
                               elevation: 5,
-                              textColor: Colors.white,
-                              color: Colors.red,
+                              textColor: Colors.red,
+                              color: Colors.white,
                               onPressed: formBloc.clear,
                               child: Center(child: Text('CLEAR')),
                             ),
@@ -248,6 +251,7 @@ class ImageFieldBlocBuilder extends StatelessWidget {
                                   );
                                   if (image != null) {
                                     fileFieldBloc.updateValue(image);
+                                    
                                   }
                                 }
                               : null,

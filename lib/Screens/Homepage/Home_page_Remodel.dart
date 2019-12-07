@@ -570,7 +570,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(FontAwesomeIcons.powerOff),
+                    child: Icon(Icons.arrow_back),
                   ),
                 ),
               ),

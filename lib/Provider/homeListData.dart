@@ -20,7 +20,7 @@ class HomeListData {
   static List<HomeListData> hotelList = <HomeListData>[
     HomeListData(
       imagePath: 'lib/asset/Insurance.jpg',
-      titleTxt: 'Pime Insurance',
+      titleTxt: 'Phone Microinsurance',
       subTxt: 'Microinsurance',
       // dist: 2.0,
       reviews: 80,
@@ -29,8 +29,8 @@ class HomeListData {
     ),
     HomeListData(
       imagePath: 'lib/asset/Insurance.jpg',
-      titleTxt: 'BIG Loans',
-      subTxt: 'Macroloans',
+      titleTxt: '',
+      subTxt: 'Furniture microinsurance',
       // dist: 4.0,
       reviews: 74,
       rating: 4.5,

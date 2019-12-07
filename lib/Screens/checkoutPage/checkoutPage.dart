@@ -1,8 +1,11 @@
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:fidortry/Provider/class.dart';
 import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
+import 'package:fidortry/Screens/loginPage/LoginPageTheme.dart' as Theme;
 
 class CheckoutPage extends StatefulWidget {
   static String tag = 'Checkoutpage';
@@ -49,22 +52,61 @@ class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Checkout"),
+        backgroundColor: Colors.green.shade600,
+      ),
       //The whole application area
-      body:SafeArea(
-          child: Column(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.1, 0.5, 0.7, 0.9],
+            colors: [
+            Colors.green.shade600,
+            Colors.green.shade500,
+            Colors.green.shade200,
+            Colors.green.shade100,
+            ],
+          ),
+        ),
+        child: 
+        Column(
             children: <Widget>[
             hero(),
-            spaceVertical(20),
+            Card(
+              margin: prefix0.EdgeInsets.symmetric(horizontal: 60),
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(10)),
+              color: Colors.white,
+              child: Column(children: <Widget>[
+                Row(children: <Widget>[
+                  Icon(Icons.phone_iphone),
+                  Text("Product: ",
+                  style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text("IPhone XR", style: prefix0.TextStyle(fontSize: 16, fontWeight: prefix0.FontWeight.normal))
+                ],),
+                Row(children: <Widget>[
+                  Icon(Icons.phone_iphone),
+                  Text("Receipt Received: ",
+                  style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Icon(Icons.check,size: 30, color: Colors.green,)
+                ],)
+              ],),),
             //Center Items
-            Expanded (
-              child: sections(),
-            ),
+            // Expanded (
+            //   child: sections(),
+            // ),
 
               //Bottom Button
-              purchase(amountstate)
+            purchase(amountstate)
+            
           ],
-          ),
-      ),
+        ),
+
+      ), 
     );
   }
 
@@ -73,12 +115,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   Widget hero(){
     return Container(
-      child: Stack(
-        children: <Widget>[
-          Image.asset("lib/asset/iphone-xr-black.png",), //This
+      child: 
+          Image.asset("lib/asset/iphone-xr-black.png")//This
           // should be a paged
           // view.
-          Positioned(child: appBar(),top: 0,),
+          // Positioned(child: appBar(),top: 0,)
           // Positioned(child: FloatingActionButton(
           //   elevation: 2,
           //   child:Image.asset(favourite? "images/heart_icon.png" : "images/heart_icon_disabled.png",
@@ -94,20 +135,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
           //   bottom: 0,
           //   right: 20,
           // ),
-
-        ],
-      ),
-    );
+        );
   }
 
 
 
   Widget appBar(){
     return Container(
-      padding: EdgeInsets.all(16),
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.all(5),
       width: MediaQuery.of(context).size.width,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           IconButton(
             icon: new Image.asset("lib/asset/back_button.png"),
@@ -115,6 +154,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               Navigator.pop(context);
             },),
           Container(
+            margin: EdgeInsets.all(20),
             child: Column(
              children: <Widget>[
                Text("Checkout",style: TextStyle(
