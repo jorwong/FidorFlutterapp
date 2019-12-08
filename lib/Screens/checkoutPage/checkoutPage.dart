@@ -6,6 +6,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:fidortry/Provider/class.dart';
 import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 import 'package:fidortry/Screens/loginPage/LoginPageTheme.dart' as Theme;
+import 'package:fidortry/Screens/CoveragePage/CoveragePage.dart';
 
 class CheckoutPage extends StatefulWidget {
   static String tag = 'Checkoutpage';
@@ -18,29 +19,29 @@ class CheckoutPage extends StatefulWidget {
   _CheckoutPageState createState() => _CheckoutPageState(amount);
 }
 
-showSubmitRequestSnackBar(BuildContext context) async {
-
-  Flushbar(
-    flushbarPosition: FlushbarPosition.BOTTOM,
-    message: "Request Successfully Saved",
-    icon: Icon(
-      Icons.info_outline,
-      size: 28.0,
-      color: Colors.red,
-    ),
-    backgroundColor: Colors.red,
-    duration: Duration(seconds: 5),
-    leftBarIndicatorColor: Colors.red,
-
-  )
-    ..show(context).then((r)=> Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePageScreen())));
+Future navigateToSubPage(context) async {
+  Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CoveragePage()));
 }
 
+// showSubmitRequestSnackBar(BuildContext context) async {
 
-Future navigateToSubPage(context)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
-}
+//   Flushbar(
+//     flushbarPosition: FlushbarPosition.BOTTOM,
+//     message: "Request Successfully Saved",
+//     icon: Icon(
+//       Icons.info_outline,
+//       size: 28.0,
+//       color: Colors.red,
+//     ),
+//     backgroundColor: Colors.red,
+//     duration: Duration(seconds: 5),
+//     leftBarIndicatorColor: Colors.red,
+
+//   )
+//     ..show(context).then((r)=> Navigator.push(
+//         context, MaterialPageRoute(builder: (context) => HomePageScreen())));
+// }
 
 class _CheckoutPageState extends State<CheckoutPage> {
   int amountstate;
@@ -80,7 +81,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               elevation: 5,
               shape: RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(10)),
-              color: Colors.white,
+              color: Colors.grey.shade500,
               child: Column(children: <Widget>[
                 Row(children: <Widget>[
                   Icon(Icons.phone_iphone),
@@ -285,7 +286,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           ), color: Colors.transparent,
             onPressed: (){
-              _onAlertButtonsPressed(context,amt);
+              navigateToSubPage;
             },),
           Text('\$$amt',
             style: TextStyle(
@@ -303,37 +304,37 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
 
 
-_onAlertButtonsPressed(context,int amountbtn) {
-    Alert(
-      context: context,
-      type: AlertType.info,
-      title: "Confirm Transaction?",
-      desc: "You will be paying \$$amountbtn for the insurance",
-      buttons: [
-        DialogButton(
-          child: Text(
-            "Confirm",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-          onPressed: () => {
-            postTransfer(amountbtn,context)
-          },
-          color: Color.fromRGBO(0, 179, 134, 1.0),
-        ),
-        DialogButton(
-          child: Text(
-            "Cancel",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-          onPressed: () => Navigator.pop(context),
-          gradient: LinearGradient(colors: [
-            Color.fromRGBO(116, 116, 191, 1.0),
-            Color.fromRGBO(52, 138, 199, 1.0)
-          ]),
-        )
-      ],
-    ).show();
-  }
+// _onAlertButtonsPressed(context,int amountbtn) {
+//     Alert(
+//       context: context,
+//       type: AlertType.info,
+//       title: "Confirm Transaction?",
+//       desc: "You will be paying \$$amountbtn for the insurance",
+//       buttons: [
+//         DialogButton(
+//           child: Text(
+//             "Confirm",
+//             style: TextStyle(color: Colors.white, fontSize: 20),
+//           ),
+//           onPressed: () => {
+//             postTransfer(amountbtn,context)
+//           },
+//           color: Color.fromRGBO(0, 179, 134, 1.0),
+//         ),
+//         DialogButton(
+//           child: Text(
+//             "Cancel",
+//             style: TextStyle(color: Colors.white, fontSize: 20),
+//           ),
+//           onPressed: () => Navigator.pop(context),
+//           gradient: LinearGradient(colors: [
+//             Color.fromRGBO(116, 116, 191, 1.0),
+//             Color.fromRGBO(52, 138, 199, 1.0)
+//           ]),
+//         )
+//       ],
+//     ).show();
+//   }
 
   ///************** UTILITY WIDGET ********************************************/
 

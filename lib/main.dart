@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'hihi',
       debugShowCheckedModeBanner: false,
-      home: new CoveragePage(),
+      home: new LoginPage(),
       routes: routes,
     );
   }
