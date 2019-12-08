@@ -413,7 +413,7 @@ class _HomePageScreenState extends State<HomePageScreen>
           ),
           Container(
             decoration: BoxDecoration(
-              color: HomePageTheme.buildLightTheme().primaryColor,
+              color: Colors.blue,
               borderRadius: const BorderRadius.all(
                 Radius.circular(38.0),
               ),
@@ -437,7 +437,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                   padding: const EdgeInsets.all(16.0),
                   child: Icon(FontAwesomeIcons.search,
                       size: 20,
-                      color: HomePageTheme.buildLightTheme().backgroundColor),
+                      color: Colors.white),
                 ),
               ),
             ),
@@ -515,8 +515,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(Icons.sort,
-                                color: HomePageTheme.buildLightTheme()
-                                    .primaryColor),
+                                color: Colors.blue)
                           ),
                         ],
                       ),
@@ -570,7 +569,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(FontAwesomeIcons.powerOff),
+                    child: Icon(Icons.arrow_back),
                   ),
                 ),
               ),

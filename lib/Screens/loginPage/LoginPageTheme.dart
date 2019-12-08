@@ -6,8 +6,10 @@ class Colors {
 
   const Colors();
 
-  static const Color loginGradientStart = const Color.fromARGB(255,	21, 176, 151);
-  static const Color loginGradientEnd = const Color.fromARGB(255, 113, 247, 159);
+  // static const Color loginGradientStart = const Color.fromARGB(255,	21, 176, 151);
+  // static const Color loginGradientEnd = const Color.fromARGB(255, 113, 247, 159);
+  static const Color loginGradientStart = const Color.fromARGB(255, 0, 128, 255);
+  static const Color loginGradientEnd = const Color.fromARGB(255, 102, 178,255);
 
   static const primaryGradient = const LinearGradient(
     colors: const [loginGradientStart, loginGradientEnd],

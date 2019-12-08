@@ -90,7 +90,8 @@ class _CheckoutPageState extends State<CheckoutPage2>{
       )
         ],
       ),
-      body: Center(child: ListView(
+      body: 
+      Center(child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[

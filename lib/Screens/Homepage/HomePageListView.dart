@@ -146,12 +146,8 @@ class HomeListView extends StatelessWidget {
                                                     starCount: 5,
                                                     rating: homeData.rating,
                                                     size: 20,
-                                                    color: HomePageTheme
-                                                            .buildLightTheme()
-                                                        .primaryColor,
-                                                    borderColor: HomePageTheme
-                                                            .buildLightTheme()
-                                                        .primaryColor,
+                                                    color: Colors.blue,
+                                                    borderColor: Colors.blue,
                                                   ),
                                                   Text(
                                                     ' ${homeData.reviews} Reviews',
@@ -218,8 +214,7 @@ class HomeListView extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.favorite_border,
-                                  color: HomePageTheme.buildLightTheme()
-                                      .primaryColor,
+                                  color: Colors.blue,
                                 ),
                               ),
                             ),
@@ -244,8 +239,8 @@ _onAlertWithCustomContentPressed(context) {
       title: "Is this Your Phone?",
       content: Column(
         children: <Widget>[
-          Text("Model: IPhone-XR 256GB"),
-          Text("Id: 7392084-13840"),
+          Text("Model: IPhone-XR 256GB", style: TextStyle(fontSize: 12),),
+          Text("Id: 7392084-13840", style: TextStyle(fontSize: 12),),
           // TextField(
           //   decoration: InputDecoration(
           //     icon: Icon(Icons.account_circle),

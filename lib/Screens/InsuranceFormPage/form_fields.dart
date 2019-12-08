@@ -52,13 +52,14 @@ class FormFieldsExampleForm extends StatelessWidget {
                 },
                 child: ListView(
                   physics: ClampingScrollPhysics(),
+                  padding: EdgeInsets.all(10),
                   children: <Widget>[
                     TextFieldBlocBuilder(
                       textFieldBloc: formBloc.textField,
                       decoration: InputDecoration(
                         labelText: 'Title of Insurance:',
                         hintText: 'My Phone Insurance!',
-                        prefixIcon: Icon(Icons.phone_iphone),
+                        prefixIcon: Icon(Icons.title),
                       ),
                     ),
                     TextFieldBlocBuilder(
@@ -68,15 +69,15 @@ class FormFieldsExampleForm extends StatelessWidget {
                         prefixText: 'IPhone-XR 256GB',
                         prefixIcon: Icon(Icons.phone_iphone),
                       ),
-                      errorBuilder: (context, error) {
-                        switch (error) {
-                          case FieldBlocValidatorsErrors.requiredTextFieldBloc:
-                            return 'You must write amazing text.';
-                            break;
-                          default:
-                            return 'This text is nor valid.';
-                        }
-                      },
+                      // errorBuilder: (context, error) {
+                      //   switch (error) {
+                      //     case FieldBlocValidatorsErrors.requiredTextFieldBloc:
+                      //       return 'You must write amazing text.';
+                      //       break;
+                      //     default:
+                      //       return 'This text is nor valid.';
+                      //   }
+                      // },
                     ),
                     ImageFieldBlocBuilder(
                       fileFieldBloc: formBloc.imageField,
@@ -87,6 +88,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                       decoration: InputDecoration(
                         labelText: 'Amount Paid',
                         prefixText: "\$1800",
+                        
                         prefixIcon: Icon(Icons.attach_money),
                       ),
                       errorBuilder: (context, error) {
@@ -136,7 +138,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                           ButtonTheme(
                             shape: RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(10)),
-                            height: 35,
+                            height: 45,
                             minWidth: 125,
                             padding: EdgeInsets.all(10),
                             child: RaisedButton(
@@ -150,17 +152,18 @@ class FormFieldsExampleForm extends StatelessWidget {
                               child: Center(child: Text('SUBMIT')),
                             ),
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 20),
                           ButtonTheme(
                             shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(10)),
-                            height: 35,
+                                borderRadius: new BorderRadius.circular(10),
+                                side: BorderSide(color: Colors.red)),
+                            height: 40,
                             minWidth: 125,
                             padding: EdgeInsets.all(10),
                             child: RaisedButton(
                               elevation: 5,
-                              textColor: Colors.white,
-                              color: Colors.red,
+                              textColor: Colors.red,
+                              color: Colors.white,
                               onPressed: formBloc.clear,
                               child: Center(child: Text('CLEAR')),
                             ),
@@ -248,6 +251,7 @@ class ImageFieldBlocBuilder extends StatelessWidget {
                                   );
                                   if (image != null) {
                                     fileFieldBloc.updateValue(image);
+                                    
                                   }
                                 }
                               : null,

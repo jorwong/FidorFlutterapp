@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "package:fidortry/Screens/loginPage/LoginPageTheme.dart" as Theme;
 import 'package:fidortry/Screens/loginPage/bubble_indication_painter.dart';
 import 'package:fidortry/Screens/Homepage/Home_page_remodel.dart';
+import 'package:fidortry/Screens/MenuPage/Menu_page.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -13,7 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 Future navigateToSubPage(context)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> Menu()));
 }
 
 class _LoginPageState extends State<LoginPage>
@@ -166,7 +167,7 @@ class _LoginPageState extends State<LoginPage>
       width: 300.0,
       height: 50.0,
       decoration: BoxDecoration(
-        color: Color(0x552B2B2B),
+        color: Colors.grey,
         borderRadius: BorderRadius.all(Radius.circular(25.0)),
       ),
       child: CustomPaint(
@@ -325,7 +326,7 @@ class _LoginPageState extends State<LoginPage>
                 child: MaterialButton(
                     // highlightColor: Colors.transparent,
                     // splashColor: Theme.Colors.loginGradientEnd,
-                    color: Colors.grey,
+                    color: Colors.white,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -333,7 +334,7 @@ class _LoginPageState extends State<LoginPage>
                       child: Text(
                         "LOGIN",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.blue,
                             fontSize: 25.0,
                             fontFamily: "WorkSansBold"),
                       ),
@@ -628,7 +629,7 @@ class _LoginPageState extends State<LoginPage>
                 child: MaterialButton(
                     // highlightColor: Colors.grey,
                     // splashColor: Colors.grey,
-                    color: Colors.grey,
+                    color: Colors.white,
                     //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -636,7 +637,7 @@ class _LoginPageState extends State<LoginPage>
                       child: Text(
                         "SIGN UP",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.blue,
                             fontSize: 25.0,
                             fontFamily: "WorkSansBold"),
                       ),
