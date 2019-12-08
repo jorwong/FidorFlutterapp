@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class Menu extends StatefulWidget {
   static String tag = 'Menupage';
   Menu({Key key, this.title}) : super(key: key);
@@ -11,8 +12,9 @@ class Menu extends StatefulWidget {
   _MenuState createState() => _MenuState();
 }
 
-Future navigateToSubPage(context)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePageScreen()));
+Future navigateToSubPage(context) async {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) => HomePageScreen()));
 }
 
 class _MenuState extends State<Menu> {
@@ -23,23 +25,23 @@ class _MenuState extends State<Menu> {
     },
     {
       'title': 'Loan',
-      'img': 'img/men.jpg',
+      'img': 'lib/asset/loan.jpg',
     },
     {
       'title': 'Savings',
-      'img': 'img/children.jpg',
+      'img': 'lib/asset/savings.png',
     },
     {
       'title': 'Bills',
-      'img': 'img/house.jpg',
+      'img': 'lib/asset/bill.png',
     },
     {
-      'title': 'Eat',
-      'img': 'img/cars.jpg',
+      'title': 'Credit Card',
+      'img': 'lib/asset/CreditCard.png',
     },
     {
-      'title': 'Shop',
-      'img': 'img/electronics.jpg',
+      'title': 'Overseas Transfer',
+      'img': 'lib/asset/Overseas.png',
     },
   ];
 
@@ -48,9 +50,11 @@ class _MenuState extends State<Menu> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Categories", style: TextStyle(fontFamily: "WorkSansBold"),),
+        title: Text(
+          "Categories",
+          style: TextStyle(fontFamily: "WorkSansBold"),
+        ),
       ),
-      // drawer: buildDrawer(),
       body: buildBody(),
     );
   }
@@ -79,9 +83,7 @@ class _MenuState extends State<Menu> {
                 ),
               ),
             ),
-            onTap: () => {
-                  navigateToSubPage(context)
-                },
+            onTap: () => {navigateToSubPage(context)},
           );
         });
   }
@@ -98,110 +100,6 @@ class _MenuState extends State<Menu> {
         decoration: BoxDecoration(
             border: Border.all(
                 width: 2, color: Colors.white, style: BorderStyle.solid)),
-      ),
-    );
-  }
-
-  Future<bool> _onWillPop() {
-    return showDialog(
-          context: context,
-          builder: (context) => new AlertDialog(
-                title: new Text('Are you sure?'),
-                content: new Text('Do you want to exit an App'),
-                actions: <Widget>[
-                  new FlatButton(
-                    onPressed: () => Navigator.of(context).pop(false),
-                    child: new Text('No'),
-                  ),
-                  new FlatButton(
-                    onPressed: () => Navigator.of(context).pop(true),
-                    child: new Text('Yes'),
-                  ),
-                ],
-              ),
-        ) ??
-        false;
-  }
-
-  Widget buildDrawer() {
-    return Drawer(
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: UserAccountsDrawerHeader(
-//              decoration: BoxDecoration(image: DecorationImage(image: AssetImage("img/mazzad.png"))),
-              accountName: Text("Omar Hatem"),
-              accountEmail: Text("omarh.ismail1@gmail.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("img/logo.png"),
-                radius: 50,
-              ),
-            ),
-          ),
-          Expanded(
-              flex: 5,
-              child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  buildSeparators("Registeration"),
-                  buildTile(
-                    "Login",
-                    "/login",
-                    'img/login.png',
-                  ),
-                  buildTile(
-                    "SignUp",
-                    "/signUp",
-                    'img/registeration_ico.png',
-                  ),
-                  Divider(),
-                  buildSeparators("Help Center"),
-                  buildTile(
-                    "Feedback",
-                    "/feedback",
-                    'img/feedback.png',
-                  ),
-                  buildTile(
-                    "How to order",
-                    "/feedback",
-                    'img/info.png',
-                  ),
-                  buildTile(
-                    "Shipping",
-                    "/feedback",
-                    'img/shipping.png',
-                  ),
-                  buildTile(
-                    "Questions and Assistance",
-                    "/feedback",
-                    'img/assistance.png',
-                  ),
-                  buildTile(
-                    "About payment",
-                    "/feedback",
-                    'img/visa.png',
-                  ),
-                  Divider(),
-                  buildSeparators("Public Policy"),
-                  buildTile(
-                    "Privacy Policy",
-                    "/feedback",
-                    'img/policy.png',
-                  ),
-                  buildTile(
-                    "Terms and Conditions",
-                    "/feedback",
-                    'img/terms.png',
-                  ),
-                  buildTile(
-                    "Return Policy",
-                    "/feedback",
-                    'img/refund.png',
-                  ),
-                ],
-              ))
-        ],
       ),
     );
   }
@@ -230,7 +128,7 @@ class _MenuState extends State<Menu> {
       ),
       title: Text(name),
       onTap: () {
-        if ( path != '/login' && path != '/signUp' )
+        if (path != '/login' && path != '/signUp')
           Navigator.pop(context);
         else
           Navigator.pushNamed(context, path);

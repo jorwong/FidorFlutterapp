@@ -60,6 +60,16 @@ flutter:
     - lib/asset/login.png
     - lib/asset/logo.png
     - lib/asset/logo_transparent.png
+    - lib/asset/loan.png
+    - lib/asset/savings.png
+    - lib/asset/bill.png
+    - lib/asset/CreditCard.png
+    - lib/asset/Overseas.png
+    - lib/asset/Phone.png
+    - lib/asset/Pet.jpg
+    - lib/asset/Furniture.png
+    - lib/asset/Clothes.jpg
+    -
   #  - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
