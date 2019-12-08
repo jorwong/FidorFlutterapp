@@ -52,13 +52,14 @@ class FormFieldsExampleForm extends StatelessWidget {
                 },
                 child: ListView(
                   physics: ClampingScrollPhysics(),
+                  padding: EdgeInsets.all(10),
                   children: <Widget>[
                     TextFieldBlocBuilder(
                       textFieldBloc: formBloc.textField,
                       decoration: InputDecoration(
                         labelText: 'Title of Insurance:',
                         hintText: 'My Phone Insurance!',
-                        prefixIcon: Icon(Icons.phone_iphone),
+                        prefixIcon: Icon(Icons.title),
                       ),
                     ),
                     TextFieldBlocBuilder(
@@ -68,22 +69,21 @@ class FormFieldsExampleForm extends StatelessWidget {
                         prefixText: 'IPhone-XR 256GB',
                         prefixIcon: Icon(Icons.phone_iphone),
                       ),
-                      errorBuilder: (context, error) {
-                        switch (error) {
-                          case FieldBlocValidatorsErrors.requiredTextFieldBloc:
-                            return 'You must write amazing text.';
-                            break;
-                          default:
-                            return 'This text is nor valid.';
-                        }
-                      },
+                      // errorBuilder: (context, error) {
+                      //   switch (error) {
+                      //     case FieldBlocValidatorsErrors.requiredTextFieldBloc:
+                      //       return 'You must write amazing text.';
+                      //       break;
+                      //     default:
+                      //       return 'This text is nor valid.';
+                      //   }
+                      // },
                     ),
                     ImageFieldBlocBuilder(
                       fileFieldBloc: formBloc.imageField,
                       formBloc: formBloc,
                     ),
                     TextFieldBlocBuilder(
-                      
                       textFieldBloc: formBloc.textFieldamt,
                       decoration: InputDecoration(
                         labelText: 'Amount Paid',

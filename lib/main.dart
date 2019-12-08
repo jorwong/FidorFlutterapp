@@ -1,4 +1,5 @@
 import 'package:fidortry/Provider/class.dart';
+import 'package:fidortry/Screens/CoveragePage/CoveragePage.dart';
 import 'package:fidortry/Screens/checkout_page.dart';
 import 'package:fidortry/Screens/home_page.dart';
 import 'package:fidortry/Screens/home_page2.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'hihi',
       debugShowCheckedModeBanner: false,
-      home: new LoginPage(),
+      home: new CoveragePage(),
       routes: routes,
     );
   }

@@ -88,7 +88,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Text("IPhone XR", style: prefix0.TextStyle(fontSize: 16, fontWeight: prefix0.FontWeight.normal))
                 ],),
-                Row(children: <Widget>[
+                Row(
+                  children: <Widget>[
                   Icon(Icons.phone_iphone),
                   Text("Receipt Received: ",
                   style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),

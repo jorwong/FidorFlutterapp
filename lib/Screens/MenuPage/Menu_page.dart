@@ -34,11 +34,11 @@ class _MenuState extends State<Menu> {
       'img': 'img/house.jpg',
     },
     {
-      'title': 'Cars',
+      'title': 'Eat',
       'img': 'img/cars.jpg',
     },
     {
-      'title': 'Electronics',
+      'title': 'Shop',
       'img': 'img/electronics.jpg',
     },
   ];
@@ -47,8 +47,8 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text("Categories"),
+        backgroundColor: Colors.blue,
+        title: Text("Categories", style: TextStyle(fontFamily: "WorkSansBold"),),
       ),
       // drawer: buildDrawer(),
       body: buildBody(),
