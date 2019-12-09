@@ -7,10 +7,11 @@ import 'package:form_bloc/form_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
 import 'dart:io';
+import 'package:fidortry/Screens/CoveragePage/CoveragePage.dart';
 
-Future navigateToSubPage(context, int amount) async {
+Future navigateToSubPage(context) async {
   Navigator.push(context,
-      MaterialPageRoute(builder: (context) => CheckoutPage(amount: amount)));
+      MaterialPageRoute(builder: (context) => CoveragePage()));
 }
 
 class FormFieldsExampleForm extends StatelessWidget {

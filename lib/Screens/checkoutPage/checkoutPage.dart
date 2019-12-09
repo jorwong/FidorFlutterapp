@@ -55,24 +55,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Checkout"),
-        backgroundColor: Colors.green.shade600,
+        backgroundColor: Colors.blue,
       ),
       //The whole application area
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [0.1, 0.5, 0.7, 0.9],
-            colors: [
-            Colors.green.shade600,
-            Colors.green.shade500,
-            Colors.green.shade200,
-            Colors.green.shade100,
-            ],
+          color: Colors.white,
           ),
-        ),
-        child: 
+          child: 
         Column(
             children: <Widget>[
             hero(),
@@ -81,7 +71,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               elevation: 5,
               shape: RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(10)),
-              color: Colors.grey.shade500,
+              color: Colors.white,
               child: Column(children: <Widget>[
                 Row(children: <Widget>[
                   Icon(Icons.phone_iphone),
@@ -108,7 +98,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ],
         ),
 
-      ), 
+      ),
+    
+        
+         
     );
   }
 
@@ -286,9 +279,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           ), color: Colors.transparent,
             onPressed: (){
-              navigateToSubPage;
+              _onAlertButtonsPressed(context, 150);
             },),
-          Text('\$$amt',
+          Text('AED 150',
             style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w100,
@@ -304,37 +297,37 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
 
 
-// _onAlertButtonsPressed(context,int amountbtn) {
-//     Alert(
-//       context: context,
-//       type: AlertType.info,
-//       title: "Confirm Transaction?",
-//       desc: "You will be paying \$$amountbtn for the insurance",
-//       buttons: [
-//         DialogButton(
-//           child: Text(
-//             "Confirm",
-//             style: TextStyle(color: Colors.white, fontSize: 20),
-//           ),
-//           onPressed: () => {
-//             postTransfer(amountbtn,context)
-//           },
-//           color: Color.fromRGBO(0, 179, 134, 1.0),
-//         ),
-//         DialogButton(
-//           child: Text(
-//             "Cancel",
-//             style: TextStyle(color: Colors.white, fontSize: 20),
-//           ),
-//           onPressed: () => Navigator.pop(context),
-//           gradient: LinearGradient(colors: [
-//             Color.fromRGBO(116, 116, 191, 1.0),
-//             Color.fromRGBO(52, 138, 199, 1.0)
-//           ]),
-//         )
-//       ],
-//     ).show();
-//   }
+_onAlertButtonsPressed(context,int amountbtn) {
+    Alert(
+      context: context,
+      type: AlertType.info,
+      title: "Confirm Transaction?",
+      desc: "You will be paying \$$amountbtn for the insurance",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "Confirm",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => {
+            postTransfer(amountbtn,context)
+          },
+          color: Color.fromRGBO(0, 179, 134, 1.0),
+        ),
+        DialogButton(
+          child: Text(
+            "Cancel",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(116, 116, 191, 1.0),
+            Color.fromRGBO(52, 138, 199, 1.0)
+          ]),
+        )
+      ],
+    ).show();
+  }
 
   ///************** UTILITY WIDGET ********************************************/
 

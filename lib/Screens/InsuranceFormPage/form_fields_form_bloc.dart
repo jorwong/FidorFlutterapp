@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:form_bloc/form_bloc.dart';
 import 'dart:io';
+import 'package:fidortry/Screens/CoveragePage/CoveragePage.dart';
 
-Future navigateToSubPage(context,int amount)async {
-  Navigator.push(context, MaterialPageRoute(builder: (context)=> CheckoutPage(amount: amount)));
+Future navigateToSubPage(context)async {
+  Navigator.push(context, MaterialPageRoute(builder: (context)=> CoveragePage()));
 }
 
 class FormFieldsExampleFormBloc extends FormBloc<String, String> {
@@ -46,7 +47,7 @@ class FormFieldsExampleFormBloc extends FormBloc<String, String> {
   
 
   void Navigate(BuildContext context){
-    navigateToSubPage(context, textFieldamt.valueToInt);
+    navigateToSubPage(context);
   }
   @override
   Stream<FormBlocState<String, String>> onSubmitting() async* {

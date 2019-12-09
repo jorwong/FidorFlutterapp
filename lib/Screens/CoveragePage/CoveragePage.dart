@@ -5,6 +5,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:fidortry/Provider/class.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
+import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
 
 bool check=false;
 
@@ -13,6 +14,11 @@ class CoveragePage extends StatefulWidget{
 
   @override
   _CoveragePageState createState() => _CoveragePageState();
+}
+
+Future navigateToSubPage(context) async {
+  Navigator.push(context,
+      MaterialPageRoute(builder: (context) => CheckoutPage()));
 }
 
 class _CoveragePageState extends State<CoveragePage> {
@@ -179,7 +185,8 @@ class _CoveragePageState extends State<CoveragePage> {
             textColor: Colors.white,
             shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15)),
             child: Text("Insure me!", style: TextStyle(fontSize: 25, color: Colors.white),), onPressed: () {
-              _onAlertButtonsPressed(context, 180);
+              //_onAlertButtonsPressed(context, 180);
+              navigateToSubPage(context);
             },)
         ],),)
     );

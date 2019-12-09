@@ -37,7 +37,7 @@ class HomeListData {
       // perNight: 200,
     ),
     HomeListData(
-      imagePath: 'lib/asset/Pet.jpg',
+      imagePath: 'lib/asset/Pet.png',
       titleTxt: 'Pet',
       subTxt: 'MicroInsurance',
       // dist: 3.0,

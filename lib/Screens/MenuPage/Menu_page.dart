@@ -25,7 +25,7 @@ class _MenuState extends State<Menu> {
     },
     {
       'title': 'Loan',
-      'img': 'lib/asset/loan.jpg',
+      'img': 'lib/asset/loan.png',
     },
     {
       'title': 'Savings',
