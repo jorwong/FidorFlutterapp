@@ -56,6 +56,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       appBar: AppBar(
         title: Text("Checkout"),
         backgroundColor: Colors.blue,
+        elevation: 5,
       ),
       //The whole application area
       body: Container(
@@ -75,25 +76,69 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Column(children: <Widget>[
                 Row(children: <Widget>[
                   Icon(Icons.phone_iphone),
+                  SizedBox(width: 5,),
                   Text("Product: ",
                   style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Text("IPhone XR", style: prefix0.TextStyle(fontSize: 16, fontWeight: prefix0.FontWeight.normal))
                 ],),
+                SizedBox(height: 5,),
                 Row(
                   children: <Widget>[
-                  Icon(Icons.phone_iphone),
+                  Icon(Icons.receipt,),
+                  SizedBox(width: 5,),
                   Text("Receipt Received: ",
                   style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Icon(Icons.check,size: 30, color: Colors.green,)
-                ],)
+                ],),
+                SizedBox(height: 5,),
+                Row(
+                  children: <Widget>[
+                  Icon(FontAwesomeIcons.umbrella),
+                  SizedBox(width: 5,),
+                  Text("Coverage: ",
+                  style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text("Level 3", style: prefix0.TextStyle(fontSize: 16),)
+                ],),
+                SizedBox(height: 5,),
+                Row(
+                  children: <Widget>[
+                  Icon(FontAwesomeIcons.dollarSign),
+                  SizedBox(width: 5,),
+                  Text("Premium/Month: ",
+                  style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text("150 AED", style: prefix0.TextStyle(fontSize: 16),)
+                ],),
+                SizedBox(height: 5,),
               ],),),
+              Container(
+                margin: EdgeInsets.fromLTRB(10, 60, 10, 0),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade400),
+                  color: Colors.grey.shade400,
+                ),
+              ),
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(15),
+                      margin: prefix0.EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      decoration: BoxDecoration(color: Colors.white),
+                      child: Column(
+                        children: <Widget>[
+                          Text("Fidor Pay"),
+                          Text("(XXXX-1234)"),
+                        ],),),
+                    purchase(amountstate)
+                  ],),)
+                
             //Center Items
             // Expanded (
             //   child: sections(),
             // ),
 
               //Bottom Button
-            purchase(amountstate)
+            
             
           ],
         ),
@@ -197,7 +242,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return Text(
       "Product: IPhone X-R \n"
       "Id: 7392084-13840 \n"
-      "Price: \$1500 \n"
+      "Price: 1500 AED \n"
       "Receipt Provided: Yes",
       textAlign: TextAlign.left,
       
@@ -267,27 +312,34 @@ class _CheckoutPageState extends State<CheckoutPage> {
   ///************** BOTTOM BUTTON ********************************************/
   Widget purchase(int amt){
     return Container(
-      padding: EdgeInsets.all(16),
+      decoration: prefix0.BoxDecoration(color: Colors.blue, borderRadius: prefix0.BorderRadius.circular(5)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          FlatButton(child: Text("Fidor Pay",
+          SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: prefix0.CrossAxisAlignment.start,
+            children: <Widget>[
+            Text('150 AED',
+            style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w100,
+                color: Colors.white,
+            ),
+          ),
+          Text("Total", style: prefix0.TextStyle(color: Colors.white),),
+          ],),
+          prefix0.FlatButton(
+            child: Text("Fidor Pay",
             style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF2F2F3E)
+                color: Colors.white,
             ),
           ), color: Colors.transparent,
             onPressed: (){
               _onAlertButtonsPressed(context, 150);
             },),
-          Text('AED 150',
-            style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w100,
-                color: Color(0xFF2F2F3E)
-            ),
-          )
+            Icon(Icons.arrow_right, color: Colors.white, size: 40,),
         ],
       ),
     );
@@ -302,7 +354,7 @@ _onAlertButtonsPressed(context,int amountbtn) {
       context: context,
       type: AlertType.info,
       title: "Confirm Transaction?",
-      desc: "You will be paying \$$amountbtn for the insurance",
+      desc: "You will be paying $amountbtn AED for the insurance",
       buttons: [
         DialogButton(
           child: Text(

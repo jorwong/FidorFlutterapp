@@ -18,6 +18,14 @@ class FormFieldsExampleFormBloc extends FormBloc<String, String> {
     validators: [FieldBlocValidators.requiredTextFieldBloc],
   );
 
+  final textFieldage = TextFieldBloc(
+    validators: [FieldBlocValidators.requiredTextFieldBloc],
+  );
+
+  final textFieldPhone = TextFieldBloc(
+    validators: [FieldBlocValidators.requiredTextFieldBloc],
+  );
+
   final booleanField = BooleanFieldBloc();
   final imageField = InputFieldBloc<File>();
 
@@ -38,6 +46,8 @@ class FormFieldsExampleFormBloc extends FormBloc<String, String> {
   List<FieldBloc> get fieldBlocs => [
         textField,
         textFieldamt,
+        textFieldage,
+        textFieldPhone,
         booleanField,
         selectField1,
         selectField2,

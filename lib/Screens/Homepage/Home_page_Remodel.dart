@@ -271,7 +271,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Available Balance: ',
+                            'Wallet Balance: ',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -284,14 +284,29 @@ class _HomePageScreenState extends State<HomePageScreen>
                             future: getCust(),
                             initialData: "Loading Data...",
                             builder: (context, cust) {
-                              if (cust.hasData) {
-                                return Text(
-                                  "\$" + cust.data.balance.toString(),
+                              if (cust.connectionState.index==3) {
+                                if (cust.data!=null){
+                                    return Text(
+                                    
+                                    cust.data.balance.toString() + " AED",
+                                  
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w100,
+                                      fontSize: 16,
+                                    ),
+                                  );
+                                }
+                                else{
+                                  return Text(
+                                  
+                                  "Loading Data...",
+                                
                                   style: TextStyle(
                                     fontWeight: FontWeight.w100,
                                     fontSize: 16,
                                   ),
                                 );
+                                }
                               } else {
                                 return Text(
                                   "Loading Data...",

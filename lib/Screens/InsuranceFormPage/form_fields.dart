@@ -64,7 +64,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                       ),
                     ),
                     TextFieldBlocBuilder(
-                      textFieldBloc: formBloc.textField,
+                      textFieldBloc: formBloc.textFieldPhone,
                       decoration: InputDecoration(
                         labelText: 'IPhone-XR 256GB',
                         prefixText: 'IPhone-XR 256GB',
@@ -88,7 +88,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                       textFieldBloc: formBloc.textFieldamt,
                       decoration: InputDecoration(
                         labelText: 'Amount Paid',
-                        prefixText: "\$1800",
+                        prefixText: "1500 AED",
                         
                         prefixIcon: Icon(Icons.attach_money),
                       ),
@@ -103,7 +103,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                       },
                     ),
                     TextFieldBlocBuilder(
-                      textFieldBloc: formBloc.textFieldamt,
+                      textFieldBloc: formBloc.textFieldage,
                       decoration: InputDecoration(
                         labelText: 'Age of Phone',
                         prefixText: '42 days ago',

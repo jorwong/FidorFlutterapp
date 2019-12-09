@@ -239,8 +239,8 @@ _onAlertWithCustomContentPressed(context) {
       title: "Is this Your Phone?",
       content: Column(
         children: <Widget>[
-          Text("Model: IPhone-XR 256GB", style: TextStyle(fontSize: 12),),
-          Text("Id: 7392084-13840", style: TextStyle(fontSize: 12),),
+          Text("Model: IPhone-XR 256GB", style: TextStyle(fontSize: 14),),
+          Text("Id: 7392084-13840", style: TextStyle(fontSize: 14),),
           // TextField(
           //   decoration: InputDecoration(
           //     icon: Icon(Icons.account_circle),

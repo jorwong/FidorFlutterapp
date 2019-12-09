@@ -40,7 +40,7 @@ class _MenuState extends State<Menu> {
       'img': 'lib/asset/CreditCard.png',
     },
     {
-      'title': 'Overseas Transfer',
+      'title': 'Transfers',
       'img': 'lib/asset/Overseas.png',
     },
   ];

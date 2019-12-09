@@ -33,7 +33,7 @@ showSubmitRequestSnackBar(BuildContext context) async {
 }
 
 Future<String> getToken() async{
-  String code='db305a68fb7bfcfcbd0ae35130162ea0';
+  String code='b74e905ed499a3c17a797e833ae85bc1';
   final response = await http.post('http://apm.sandboxpresales.fidorfzco.com/oauth/token?grant_type=authorization_code&client_id=2d9f97613542093e&client_secret=1f527b70f6c8dc24e7f8e44b8a7cd5b7&code='+code+'&redirect_uri=http://localhost:3000/OAuth2callback');
   print (response.statusCode);
   Map<String, dynamic> jsonn= json.decode(response.body);
@@ -54,7 +54,7 @@ Future<Customer> getCustomers() async{
   });
   Map<String, dynamic> decoded = json.decode(response.body);
   print(decoded['data'][0]['id']);
-  Customer cust= Customer(decoded['data'][0]['id'], decoded['data'][0]['customers'][0]['first_name'], decoded['data'][0]['customers'][0]['last_name'], decoded['data'][0]['balance']);
+  Customer cust= Customer(decoded['data'][0]['id'], decoded['data'][0]['customers'][0]['first_name'], decoded['data'][0]['customers'][0]['last_name'], decoded['data'][0]['balance'],response.statusCode);
   int amount=decoded['data'][0]['balance'];
   return cust;
 }
@@ -89,12 +89,18 @@ class Customer{
   String firstName;
   String lastName;
   int balance;
+  int reponse;
 
-  Customer(String id, String fName, String lName, int bal){
+  Customer(String id, String fName, String lName, int bal, int respo){
     this.accountid=id;
     this.firstName=fName;
     this.firstName=lName;
     this.balance=bal;
+    this.reponse=respo;
+  }
+
+  int get resp{
+    return reponse;
   }
 
   String get custId{

@@ -1,13 +1,6 @@
 import 'package:fidortry/Provider/class.dart';
 import 'package:fidortry/Screens/CoveragePage/CoveragePage.dart';
-import 'package:fidortry/Screens/checkout_page.dart';
-import 'package:fidortry/Screens/home_page.dart';
-import 'package:fidortry/Screens/home_page2.dart';
-import 'package:fidortry/Screens/home_page2.dart' as prefix0;
-import 'package:fidortry/Screens/login_page.dart' as prefix1;
 import 'package:flutter/material.dart';
-import 'Screens/login_page.dart';
-import 'Screens/Insurance_forms_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 import 'package:fidortry/Screens/loginPage/LoginPage.dart';
@@ -22,7 +15,6 @@ class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     //LoginPage.tag: (context)=>LoginPage(),
     HomePageScreen.tag: (context) => HomePageScreen(),
-    InsuranceFormsPage.tag: (context) => InsuranceFormsPage(),
     CheckoutPage.tag: (context) => CheckoutPage(),
     FormFieldsExampleForm.tag: (context) => FormFieldsExampleForm(),
   };

@@ -179,12 +179,12 @@ class _CoveragePageState extends State<CoveragePage> {
             ),
           ),
           RaisedButton(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(15),
             elevation: 5,
             color: Colors.blue,
             textColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15)),
-            child: Text("Insure me!", style: TextStyle(fontSize: 25, color: Colors.white),), onPressed: () {
+            shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10)),
+            child: Text("Insure me!", style: TextStyle(fontSize: 20, color: Colors.white),), onPressed: () {
               //_onAlertButtonsPressed(context, 180);
               navigateToSubPage(context);
             },)
