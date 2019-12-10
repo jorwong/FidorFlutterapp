@@ -218,7 +218,7 @@ _onAlertButtonsPressed(context,int amountbtn) {
       context: context,
       type: AlertType.info,
       title: "Confirm Transaction?",
-      desc: "You will be paying \$$amountbtn for the insurance",
+      desc: "You will be paying $amountbtn AED for the insurance",
       buttons: [
         DialogButton(
           child: Text(

@@ -106,7 +106,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   SizedBox(width: 5,),
                   Text("Premium/Month: ",
                   style: prefix0.TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  Text("150 AED", style: prefix0.TextStyle(fontSize: 16),)
+                  Text("120 AED", style: prefix0.TextStyle(fontSize: 16),)
                 ],),
                 SizedBox(height: 5,),
               ],),),
@@ -319,7 +319,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           Column(
             crossAxisAlignment: prefix0.CrossAxisAlignment.start,
             children: <Widget>[
-            Text('150 AED',
+            Text('120 AED',
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w100,
@@ -337,7 +337,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           ), color: Colors.transparent,
             onPressed: (){
-              _onAlertButtonsPressed(context, 150);
+              _onAlertButtonsPressed(context, 120);
             },),
             Icon(Icons.arrow_right, color: Colors.white, size: 40,),
         ],

@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:fidortry/Provider/class.dart';
+import 'package:fidortry/Screens/MenuPage/Menu_page.dart';
+import 'package:fidortry/Screens/loginPage/LoginPage.dart';
 import 'package:flushbar/flushbar.dart';
 
 import "HomePageListView.dart";
@@ -24,6 +26,11 @@ Future navigateToSubPage(context) async {
   Navigator.push(context,
       MaterialPageRoute(builder: (context) => FormFieldsExampleForm()));
 }
+
+// Future navigateToLogPage(context) async {
+//   Navigator.push(context,
+//       MaterialPageRoute(builder: (context) => new Menu()));
+// }
 
 class _HomePageScreenState extends State<HomePageScreen>
     with TickerProviderStateMixin {
@@ -580,7 +587,9 @@ class _HomePageScreenState extends State<HomePageScreen>
                     Radius.circular(32.0),
                   ),
                   onTap: () {
-                    Navigator.pop(context);
+                   Navigator.pop(context);
+                   
+                    
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

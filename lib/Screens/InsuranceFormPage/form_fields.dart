@@ -8,10 +8,16 @@ import 'package:image_picker/image_picker.dart';
 import 'package:fidortry/Screens/checkoutPage/checkoutPage.dart';
 import 'dart:io';
 import 'package:fidortry/Screens/CoveragePage/CoveragePage.dart';
+import 'package:fidortry/Screens/Homepage/Home_page_Remodel.dart';
 
 Future navigateToSubPage(context) async {
   Navigator.push(context,
       MaterialPageRoute(builder: (context) => CoveragePage()));
+}
+
+Future navigateToPage(context) async {
+  Navigator.push(context,
+      MaterialPageRoute(builder: (context) => HomePageScreen()));
 }
 
 class FormFieldsExampleForm extends StatelessWidget {
@@ -31,6 +37,7 @@ class FormFieldsExampleForm extends StatelessWidget {
                 style: TextStyle(color: Colors.black),
               ),
               backgroundColor: Colors.white,
+              
             ),
             backgroundColor: const Color(0xFFF6F6F6),
             body: Card(
