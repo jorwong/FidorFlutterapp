@@ -2,7 +2,8 @@
 # fidortry
 
 PREREQUISITE
-- Make sure you have 
+- Make sure you have a emulator
+- Visual Studio Code with flutter plugin installed
 
 First get the authorization code from the 'http://apm.sandbox-test.fidorfzco.com/oauth/authorize?client_id={clientid}&redirect_uri={Redirect_Uri}&response_type=code&state=approved'. Replace the clientid and redirect uri accordingly. 
 
